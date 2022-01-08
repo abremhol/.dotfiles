@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	mkd="mkdir -pv"
+
+alias chrome="/c/Program\ Files/Google/Chrome/Application/chrome.exe"

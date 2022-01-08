@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+addToPathFront /home/adam/n/bin
+
+addToPath $HOME/dotnet
+addToPath $HOME/.dotnet/tools
+addToPath /usr/local/go/bin
+addToPath $GOPATH/bin
+addToPath $HOME/.yarn/bin
+
+# ccache
+addToPathFront /usr/lib/ccache
