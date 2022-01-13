@@ -155,9 +155,9 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>gb :GBranches<CR>
 
 " vim TODO
-nmap <Leader>tu <Plug>BujoChecknormal
-nmap <Leader>th <Plug>BujoAddnormal
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
+nmap <Leader>tc <Plug>BujoChecknormal
+nmap <Leader>ta <Plug>BujoAddnormal
 
 "terminal easy close"
 :tnoremap <Esc> <C-\><C-n>
