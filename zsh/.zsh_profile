@@ -8,7 +8,6 @@ for i in `find -L $PERSONAL`; do
     source $i
 done
 
-export npm_config_prefix=~/.node_modules
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export N_PREFIX="$HOME/.local/n"
