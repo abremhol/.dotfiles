@@ -8,8 +8,11 @@ for i in `find -L $PERSONAL`; do
     source $i
 done
 
+#replace ctrl r with fzf search
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
+
+bindkey -s ^f "tmux-sessionizer\n"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
