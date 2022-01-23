@@ -6,5 +6,5 @@ ZSH_THEME="minimal"
 
 plugins=(git zsh-autosuggestions)
 
-source $HOME/.zsh_profile
 source $ZSH/oh-my-zsh.sh
+source $HOME/.zsh_profile

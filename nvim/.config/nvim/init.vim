@@ -51,7 +51,7 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-surround'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
 Plug 'jremmen/vim-ripgrep'
-Plug 'gruvbox-community/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 Plug 'szw/vim-maximizer'
 Plug 'vuciv/vim-bujo'
 
@@ -60,9 +60,9 @@ Plug 'vuciv/vim-bujo'
 call plug#end()
 
 " Themes
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
-set background=dark
+set termguicolors
+colorscheme ayu
+let ayucolor="dark"
 
 let mapleader = " "
 
@@ -86,7 +86,7 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_enable_auto_hover = 0
 
 lua require'lspconfig'.sumneko_lua.setup{ on_attach=require'completion'.on_attach }
-
+lua require'lspconfig'.angularls.setup{on_attach=require'completion'.on_attach}
 lua << EOF
 vim.lsp.set_log_level("debug")
 EOF
@@ -131,6 +131,7 @@ lua require'lspconfig'.jsonls.setup{ on_attach=require'completion'.on_attach}
 lua require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
 
 lua require('telescope').setup({defaults = {file_sorter = require('telescope.sorters').get_fzy_sorter}})
+nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 
 "lsp bindings
 nnoremap gd :lua vim.lsp.buf.definition()<CR>
@@ -146,6 +147,7 @@ nnoremap <leader>gda :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <leader>fs :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>
 
 "telescope
+nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
