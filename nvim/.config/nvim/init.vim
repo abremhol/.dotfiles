@@ -116,7 +116,8 @@ EOF
 lua require'lspconfig'.tsserver.setup {on_attach=require'completion'.on_attach}
 
 lua << EOF
-require'lspconfig'.jsonls.setup {
+local lspconfig = require'lspconfig'
+lspconfig.jsonls.setup {
     commands = {
       Format = {
         function()
@@ -125,6 +126,12 @@ require'lspconfig'.jsonls.setup {
       }
     }
 }
+EOF
+
+lua << EOF
+local lspconfig = require'lspconfig'
+
+lspconfig.gopls.setup{ on_attach=require'completion'.on_attach}
 EOF
 
 lua require'lspconfig'.jsonls.setup{ on_attach=require'completion'.on_attach}
