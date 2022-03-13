@@ -34,8 +34,21 @@ call plug#begin('~/.vim/plugged')
 
 "neovim lsp plugins
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+"Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'onsails/lspkind-nvim'
+Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'simrat39/symbols-outline.nvim'
+
+" Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
 
 "telescope
 Plug 'nvim-lua/popup.nvim'
@@ -77,81 +90,14 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_localrmdir='rm -r'
 
-" Use <C-j> and <C-k> to navigate through popup menu of completion-nvim
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
-set completeopt=menuone,noinsert,noselect
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-let g:completion_enable_auto_hover = 0
-
-lua require'lspconfig'.sumneko_lua.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.angularls.setup{on_attach=require'completion'.on_attach}
-lua << EOF
-vim.lsp.set_log_level("debug")
-EOF
-
-"disable virtual text for diagnostics in c#
-lua << EOF
-local lspconfig = require'lspconfig'
-local pid = vim.fn.getpid()
-local omnisharp_bin = "/home/adam/.local/share/vim-lsp-settings/servers/omnisharp-lsp/omnisharp-lsp"
-lspconfig.omnisharp.setup {
-    root_dir = lspconfig.util.root_pattern('.git'),
-    cmd = {omnisharp_bin, "--languageserver", "--hostPID", tostring(pid)},
-    on_attach=require'completion'.on_attach,
-    handlers = { ["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      severity_limit = "Warning",
-      },
-    signs = {
-      severity_limit = "Warning",
-      },
-    })
-    }
-}
-EOF
-
-lua require'lspconfig'.tsserver.setup {on_attach=require'completion'.on_attach}
-
-lua << EOF
-local lspconfig = require'lspconfig'
-lspconfig.jsonls.setup {
-    commands = {
-      Format = {
-        function()
-          vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
-        end
-      }
-    }
-}
-EOF
-
-lua << EOF
-local lspconfig = require'lspconfig'
-
-lspconfig.gopls.setup{ on_attach=require'completion'.on_attach}
-EOF
-
-lua require'lspconfig'.jsonls.setup{ on_attach=require'completion'.on_attach}
 lua require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
-
 lua require('telescope').setup({defaults = {file_sorter = require('telescope.sorters').get_fzy_sorter}})
+lua require("adam")
+
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 
-"lsp bindings
-nnoremap gd :lua vim.lsp.buf.definition()<CR>
-nnoremap gf :lua vim.lsp.buf.formatting()<CR>
-nnoremap <leader>rf :lua vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})<CR>
-nnoremap gi :lua vim.lsp.buf.implementation()<CR>
-nnoremap gsh :lua vim.lsp.buf.signature_help()<CR>
-nnoremap gr :lua vim.lsp.buf.references()<CR>
-nnoremap <F2> :lua vim.lsp.buf.rename()<CR>
-nnoremap gh :lua vim.lsp.buf.hover()<CR>
-nnoremap gca :lua vim.lsp.buf.code_action()<CR>
-nnoremap <leader>gda :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
-nnoremap <leader>fs :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>
+set completeopt=menu,menuone,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 "telescope
 nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
@@ -159,6 +105,7 @@ nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
 
 "git
 nnoremap <leader>gb :GBranches<CR>
