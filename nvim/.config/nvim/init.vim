@@ -35,6 +35,7 @@ call plug#begin('~/.vim/plugged')
 "neovim lsp plugins
 Plug 'neovim/nvim-lspconfig'
 "Plug 'nvim-lua/completion-nvim'
+Plug 'Hoffs/omnisharp-extended-lsp.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'hrsh7th/cmp-nvim-lsp'

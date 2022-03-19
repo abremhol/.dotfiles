@@ -23,7 +23,7 @@ cmp.setup({
 			-- vim.fn["vsnip#anonymous"](args.body)
 
 			-- For `luasnip` user.
-			-- require("luasnip").lsp_expand(args.body)
+			 require("luasnip").lsp_expand(args.body)
 
 			-- For `ultisnips` user.
 			-- vim.fn["UltiSnips#Anon"](args.body)
@@ -120,6 +120,7 @@ require'lspconfig'.omnisharp.setup(config({
       severity_limit = "Warning",
       },
     })
+    ,["textDocument/definition"] = require('omnisharp_extended').handler
     }
 }))
 
