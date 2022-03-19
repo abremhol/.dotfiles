@@ -35,6 +35,7 @@ cmp.setup({
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
 	},
 
 	formatting = {
@@ -92,11 +93,11 @@ local function config(_config)
 			Nnoremap("gca", ":lua vim.lsp.buf.code_action()<CR>")
 			Nnoremap("gda", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
 			Nnoremap("gf", ":lua vim.lsp.buf.formatting()<CR>")
-			Nnoremap("F2", ":lua vim.lsp.buf.rename()<CR>")
+			Nnoremap("<F2>", ":lua vim.lsp.buf.rename()<CR>")
 			Nnoremap("<leader>vws", ":lua vim.lsp.buf.workspace_symbol()<CR>")
 			Nnoremap("<leader>vd", ":lua vim.diagnostic.open_float()<CR>")
-			Nnoremap("[d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
-			Nnoremap("]d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
+			Nnoremap("<F8>", ":lua vim.lsp.diagnostic.goto_next()<CR>")
+			Nnoremap("<F7>", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
 			Inoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 		end,
 	}, _config or {})
@@ -104,11 +105,11 @@ end
 
 require'lspconfig'.angularls.setup(config())
 
-local lspconfig = require'lspconfig'
+-- local lspconfig = require'lspconfig'
 local pid = vim.fn.getpid()
-local omnisharp_bin = "/home/adam/.local/share/vim-lsp-settings/servers/omnisharp-lsp/omnisharp-lsp"
+local omnisharp_bin = "/home/adam/personal/omnisharp-roslyn/release/run"
 require'lspconfig'.omnisharp.setup(config({
-    root_dir = lspconfig.util.root_pattern('.git'),
+    -- root_dir = lspconfig.util.root_pattern('.git'),
     cmd = {omnisharp_bin, "--languageserver", "--hostPID", tostring(pid)},
     handlers = { ["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
