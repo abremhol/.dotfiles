@@ -8,7 +8,7 @@ end
 Nnoremap = CreateNoremap("n", { noremap = true })
 Inoremap = CreateNoremap("i", { noremap = true })
 
--- require("adam.telescope")
+require("adam.telescope")
 require("adam.lsp")
 
 P = function(v)

@@ -63,7 +63,7 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-surround'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
+"Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
 Plug 'jremmen/vim-ripgrep'
 Plug 'ayu-theme/ayu-vim'
 Plug 'szw/vim-maximizer'
