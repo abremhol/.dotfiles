@@ -1,42 +1,13 @@
-syntax on
-filetype plugin indent on
-
-set exrc
-set guicursor=
-set relativenumber
-set nohlsearch
-set hidden
-set noerrorbells
-set tabstop=4 softtabstop=4
-
-set expandtab
-set smartindent
-set nu
-set nowrap
-set smartcase
-set noswapfile
-set nobackup
-set undodir=~/.vim/undodir
-set undofile
-set incsearch
-set scrolloff=8
-set noshowmode
-set clipboard+=unnamedplus
-
-set cmdheight=2
-set signcolumn=yes
-set statusline+=%F
-
-set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=lightgrey
-
 call plug#begin('~/.vim/plugged')
 
 "neovim lsp plugins
 Plug 'neovim/nvim-lspconfig'
 "Plug 'nvim-lua/completion-nvim'
 Plug 'Hoffs/omnisharp-extended-lsp.nvim'
+
+"treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -74,7 +45,6 @@ Plug 'vuciv/vim-bujo'
 call plug#end()
 
 " Themes
-set termguicolors
 colorscheme ayu
 let ayucolor="dark"
 
@@ -97,7 +67,6 @@ lua require("adam")
 
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 
-set completeopt=menu,menuone,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 "telescope

@@ -10,6 +10,8 @@ Inoremap = CreateNoremap("i", { noremap = true })
 
 require("adam.telescope")
 require("adam.lsp")
+require("adam.treesitter")
+require("adam.options")
 
 P = function(v)
 	print(vim.inspect(v))
