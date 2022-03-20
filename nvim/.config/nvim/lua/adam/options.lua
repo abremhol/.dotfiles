@@ -10,7 +10,6 @@ local options = {
   ignorecase = true,                       -- ignore case in search patterns
   secure = false,                          -- set exrc, allow vim to run commands
   mouse = "a",                             -- allow the mouse to be used in neovim
-  undodir = "~/.vim/undodir",
   statusline = "+=%F",                     -- statusline to current file path
   colorcolumn = "80",
   incsearch = true,
