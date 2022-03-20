@@ -65,19 +65,8 @@ lua require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
 lua require('telescope').setup({defaults = {file_sorter = require('telescope.sorters').get_fzy_sorter}})
 lua require("adam")
 
-nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-
-"telescope
-nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-"git
-nnoremap <leader>gb :GBranches<CR>
 
 " vim TODO
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
@@ -87,25 +76,6 @@ nmap <Leader>ta <Plug>BujoAddnormal
 "terminal easy close"
 :tnoremap <Esc> <C-\><C-n>
 
-" Move 1 more lines up or down in normal and visual selection modes.
-nnoremap K :m .-2<CR>==
-nnoremap J :m .+1<CR>==
-vnoremap K :m '<-2<CR>gv=gv
-vnoremap J :m '>+1<CR>gv=gv
-
-"other remaps
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
-nnoremap <leader>m :MaximizerToggle!<CR>
-
-nnoremap n nzzzv
-nnoremap N Nzzzv
-vnoremap <leader>p "_dP
-vnoremap <leader>d "_d
-nnoremap <leader>d "_d
-vnoremap <leader>y "+y
-nnoremap <leader>y "+y
-nnoremap <leader>Y gg"+yG
-nnoremap Y y$
 
 fun! TrimWhitespace()
     let l:save = winsaveview()

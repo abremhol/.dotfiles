@@ -12,6 +12,7 @@ require("adam.telescope")
 require("adam.lsp")
 require("adam.treesitter")
 require("adam.options")
+require("adam.keymaps")
 
 P = function(v)
 	print(vim.inspect(v))
