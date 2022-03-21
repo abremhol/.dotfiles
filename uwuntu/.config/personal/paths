@@ -2,6 +2,7 @@
 
 addToPathFront /home/adam/n/bin
 
+addToPath /home/adam/personal/lua-language-server/bin/Linux
 addToPath $HOME/dotnet
 addToPath $HOME/.dotnet/tools
 addToPath /usr/local/go/bin

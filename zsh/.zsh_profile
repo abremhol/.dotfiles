@@ -30,7 +30,7 @@ addToPathFront $HOME/.local/go/bin
 
 #Default programs:
 export EDITOR="nvim"
-export TERMINAL="termite"
+export TERM="tmux-256color"
 export BROWSER="brave"
 export READER="zathura"
 

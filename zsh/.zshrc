@@ -8,3 +8,5 @@ plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh_profile
+
+alias luamake=/home/adam/personal/lua-language-server/3rd/luamake/luamake
