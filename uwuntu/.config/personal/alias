@@ -7,4 +7,5 @@ alias \
 	rm="rm -vI" \
 	mkd="mkdir -pv"
 
-alias chrome="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
+#User chrome in windows
+#alias chrome="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
