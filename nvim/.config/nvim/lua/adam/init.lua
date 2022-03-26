@@ -8,6 +8,7 @@ end
 Nnoremap = CreateNoremap("n", { noremap = true })
 Inoremap = CreateNoremap("i", { noremap = true })
 
+require("adam.plugins")
 require("adam.telescope")
 require("adam.lsp")
 require("adam.treesitter")
