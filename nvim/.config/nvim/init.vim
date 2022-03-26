@@ -1,54 +1,6 @@
-call plug#begin('~/.vim/plugged')
-
-"neovim lsp plugins
-Plug 'neovim/nvim-lspconfig'
-"Plug 'nvim-lua/completion-nvim'
-Plug 'Hoffs/omnisharp-extended-lsp.nvim'
-
-"treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'p00f/nvim-ts-rainbow'
-
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
-Plug 'onsails/lspkind-nvim'
-Plug 'nvim-lua/lsp_extensions.nvim'
-Plug 'glepnir/lspsaga.nvim'
-Plug 'simrat39/symbols-outline.nvim'
-
-" Snippets
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
-
-"telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-"other
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'stsewd/fzf-checkout.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-surround'
-"Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
-Plug 'jremmen/vim-ripgrep'
-Plug 'ayu-theme/ayu-vim'
-Plug 'szw/vim-maximizer'
-Plug 'vuciv/vim-bujo'
-
-"visual"
-
-call plug#end()
-
 " Themes
 colorscheme ayu
 let ayucolor="dark"
-
-let mapleader = " "
 
 if executable('rg')
     let g:rg_derive_root='true'
