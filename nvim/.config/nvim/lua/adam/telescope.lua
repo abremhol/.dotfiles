@@ -11,7 +11,8 @@ require('telescope').setup{
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
       }
-    }
+    },
+    file_sorter = require('telescope.sorters').get_fzy_sorter
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:

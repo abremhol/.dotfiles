@@ -52,6 +52,12 @@ vim.cmd "set whichwrap+=<,>,[,],h,l"
 
  vim.cmd "colorscheme material"
  vim.g.material_style = "deep ocean"
+
+vim.cmd([[
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
+  ]])
 -- global variables
 vim.g["completion_matching_strategy_list"] = {'exact', 'substring', 'fuzzy'}
 -- makes nvim . open netrw on side
