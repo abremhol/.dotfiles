@@ -69,20 +69,25 @@ return packer.startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
 
-  -- other
-use {'junegunn/fzf', run = ":call fzf#install()" }
-use 'junegunn/fzf.vim'
-use 'stsewd/fzf-checkout.vim'
-use 'tpope/vim-fugitive'
-use 'mhinz/vim-signify'
-use 'tpope/vim-surround'
+  -- fugitive
+  use 'tpope/vim-fugitive'
+  use 'cedarbaum/fugitive-azure-devops.vim'
+  use 'tpope/vim-rhubarb'
 
--- use 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
+
+  -- other
+  use {'junegunn/fzf', run = ":call fzf#install()" }
+  use 'junegunn/fzf.vim'
+  use 'stsewd/fzf-checkout.vim'
+  use 'mhinz/vim-signify'
+  use 'tpope/vim-surround'
+
+  -- use 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
   --
-use 'jremmen/vim-ripgrep'
-use 'ayu-theme/ayu-vim'
-use 'szw/vim-maximizer'
-use 'vuciv/vim-bujo'
+  use 'jremmen/vim-ripgrep'
+  use 'ayu-theme/ayu-vim'
+  use 'szw/vim-maximizer'
+  use 'vuciv/vim-bujo'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
