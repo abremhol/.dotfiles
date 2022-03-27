@@ -72,3 +72,11 @@ keymap("n", "<leader>fh", "<cmd>lua require'telescope.builtin'.help_tags(require
 
 -- Git
 keymap("n", "<leader>gb", "<cmd>:GBranches<CR>", opts)
+
+-- Bujo
+--
+vim.g["bujo#todo_file_path "] = '/home/adam/.cache/bujo'
+
+-- Other
+-- Easy close terminal
+keymap("t", "<Esc>", "<C-\\><C-n>", opts)

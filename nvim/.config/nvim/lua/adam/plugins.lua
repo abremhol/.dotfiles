@@ -85,9 +85,9 @@ return packer.startup(function(use)
   -- use 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
   --
   use 'jremmen/vim-ripgrep'
-  use 'ayu-theme/ayu-vim'
   use 'szw/vim-maximizer'
   use 'vuciv/vim-bujo'
+  use 'marko-cerovac/material.nvim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

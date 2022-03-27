@@ -48,3 +48,15 @@ for k, v in pairs(options) do
 end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
+-- Colorscheme
+
+ vim.cmd "colorscheme material"
+ vim.g.material_style = "deep ocean"
+-- global variables
+vim.g["completion_matching_strategy_list"] = {'exact', 'substring', 'fuzzy'}
+-- makes nvim . open netrw on side
+vim.g["netrw_browse_split"] = 4
+vim.g["netrw_liststyle"] = 3
+vim.g["netrw_banner"] = 0
+vim.g["netrw_winsize"] = 25
+-- vim.g["netrw_localrmdir"] = 'rm -r'
