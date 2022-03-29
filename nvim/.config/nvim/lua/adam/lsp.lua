@@ -1,7 +1,6 @@
 local sumneko_root_path = "/home/adam/personal/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -9,6 +8,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local cmp = require("cmp")
 local source_mapping = {
 	buffer = "[Buffer]",
+	luasnip = "[Snippet]",
 	nvim_lsp = "[LSP]",
 	nvim_lua = "[Lua]",
 	cmp_tabnine = "[TN]",
@@ -72,6 +72,7 @@ cmp.setup({
 		{ name = "buffer" },
 	},
 })
+
 
 local tabnine = require("cmp_tabnine.config")
 tabnine:setup({

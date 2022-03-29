@@ -12,3 +12,15 @@ nmap <Leader>ta <Plug>BujoAddnormal
 
 "terminal easy close"
 :tnoremap <Esc> <C-\><C-n>
+
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+augroup WHITE_SPACE_BE_GONE
+    autocmd!
+    autocmd BufWritePre * :call TrimWhitespace()
+augroup END
+

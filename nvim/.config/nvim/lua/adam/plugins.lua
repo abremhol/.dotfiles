@@ -51,10 +51,15 @@ return packer.startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'p00f/nvim-ts-rainbow'
 
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
+  -- cmp plugins
   use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-buffer'
+  use 'saadparwaiz1/cmp_luasnip'
   use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+
+  -- lsp
   use 'onsails/lspkind-nvim'
   use 'nvim-lua/lsp_extensions.nvim'
   use 'glepnir/lspsaga.nvim'
