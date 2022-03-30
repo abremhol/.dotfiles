@@ -8,7 +8,10 @@ if not snip_status_ok then
   return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
+local lsp_kind_status_ok, lspkind = pcall(require, "lspkind")
+if not lsp_kind_status_ok then
+  return
+end
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1
@@ -108,13 +111,25 @@ cmp.setup {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       -- Kind icons
-      vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+			vim_item.kind = lspkind.presets.default[vim_item.kind]
+     -- local kind icons
+      -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-      vim_item.menu = source_mapping[entry.source.name]
-      return vim_item
+			local menu = source_mapping[entry.source.name]
+			if entry.source.name == "cmp_tabnine" then
+				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+					menu = entry.completion_item.data.detail .. " " .. menu
+				end
+				vim_item.kind = ""
+			end
+			vim_item.menu = menu
+			return vim_item
     end,
   },
   sources = {
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lua" },
+		{ name = "cmp_tabnine" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
@@ -131,3 +146,32 @@ cmp.setup {
     native_menu = false,
   },
 }
+
+local tabnine = require("cmp_tabnine.config")
+tabnine:setup({
+	max_lines = 1000,
+	max_num_results = 20,
+	sort = true,
+	run_on_every_keystroke = true,
+	snippet_placeholder = "..",
+})
+
+local snippets_paths = function()
+	local plugins = { "friendly-snippets" }
+	local paths = {}
+	local path
+	local root_path = vim.env.HOME .. "/.vim/plugged/"
+	for _, plug in ipairs(plugins) do
+		path = root_path .. plug
+		if vim.fn.isdirectory(path) ~= 0 then
+			table.insert(paths, path)
+		end
+	end
+	return paths
+end
+
+require("luasnip.loaders.from_vscode").lazy_load({
+	paths = snippets_paths(),
+	include = nil, -- Load all languages
+	exclude = {},
+})

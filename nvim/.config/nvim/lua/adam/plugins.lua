@@ -44,7 +44,7 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
   use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
+  use 'williamboman/nvim-lsp-installer'
   use 'Hoffs/omnisharp-extended-lsp.nvim'
 
   -- "treesitter
@@ -52,14 +52,16 @@ return packer.startup(function(use)
   use 'p00f/nvim-ts-rainbow'
 
   -- cmp plugins
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/cmp-buffer'
-  use 'saadparwaiz1/cmp_luasnip'
-  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lua"  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
   -- lsp
+
   use 'onsails/lspkind-nvim'
   use 'nvim-lua/lsp_extensions.nvim'
   use 'glepnir/lspsaga.nvim'
