@@ -43,7 +43,6 @@ return packer.startup(function(use)
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
-
   -- "treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'p00f/nvim-ts-rainbow'
@@ -87,6 +86,7 @@ return packer.startup(function(use)
   use 'stsewd/fzf-checkout.vim'
   use 'mhinz/vim-signify'
   use 'tpope/vim-surround'
+  use "windwp/nvim-autopairs"
 
   -- use 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
   --
