@@ -43,9 +43,6 @@ return packer.startup(function(use)
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
-  use 'Hoffs/omnisharp-extended-lsp.nvim'
 
   -- "treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -61,7 +58,9 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lua"  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
   -- lsp
-
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/nvim-lsp-installer'
+  use 'Hoffs/omnisharp-extended-lsp.nvim' -- fixes go to def in libraries
   use 'onsails/lspkind-nvim'
   use 'nvim-lua/lsp_extensions.nvim'
   use 'glepnir/lspsaga.nvim'
