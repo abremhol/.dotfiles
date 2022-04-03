@@ -46,6 +46,7 @@ return packer.startup(function(use)
   -- "treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'p00f/nvim-ts-rainbow'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -87,6 +88,7 @@ return packer.startup(function(use)
   use 'mhinz/vim-signify'
   use 'tpope/vim-surround'
   use "windwp/nvim-autopairs"
+  use "numToStr/Comment.nvim" -- Easily comment stuff
 
   -- use 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
   --
