@@ -42,7 +42,10 @@ packer.init {
 return packer.startup(function(use)
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
-
+  use 'kyazdani42/nvim-web-devicons'
+  use 'kyazdani42/nvim-tree.lua'
+  use "akinsho/bufferline.nvim"
+  use "moll/vim-bbye" -- to be able to close buffers with bdelete without closing neovim
   -- "treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'p00f/nvim-ts-rainbow'
@@ -70,12 +73,13 @@ return packer.startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use 'rafamadriz/friendly-snippets'
 
-  -- telescope
+  -- Telescope
   use  'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
 
-  -- fugitive
+  -- Git
+  use "lewis6991/gitsigns.nvim"
   use 'tpope/vim-fugitive'
   use 'cedarbaum/fugitive-azure-devops.vim'
   use 'tpope/vim-rhubarb'
@@ -85,7 +89,6 @@ return packer.startup(function(use)
   use {'junegunn/fzf', run = ":call fzf#install()" }
   use 'junegunn/fzf.vim'
   use 'stsewd/fzf-checkout.vim'
-  use 'mhinz/vim-signify'
   use 'tpope/vim-surround'
   use "windwp/nvim-autopairs"
   use "numToStr/Comment.nvim" -- Easily comment stuff

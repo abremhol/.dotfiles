@@ -32,7 +32,7 @@ local options = {
   tabstop = 2,                             -- insert 2 spaces for a tab
   cursorline = true,                       -- highlight the current line
   number = true,                           -- set numbered lines
-  relativenumber = true,                   -- set relative numbered lines
+  relativenumber = false,                   -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
@@ -58,11 +58,3 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
   ]])
--- global variables
-vim.g["completion_matching_strategy_list"] = {'exact', 'substring', 'fuzzy'}
--- makes nvim . open netrw on side
-vim.g["netrw_browse_split"] = 4
-vim.g["netrw_liststyle"] = 3
-vim.g["netrw_banner"] = 0
-vim.g["netrw_winsize"] = 25
--- vim.g["netrw_localrmdir"] = 'rm -r'

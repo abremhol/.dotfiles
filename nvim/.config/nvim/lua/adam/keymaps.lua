@@ -1,5 +1,4 @@
 local opts = { noremap = true, silent = true }
-local optsremap = { noremap = false, silent = true }
 
 -- local term_opts = { silent = true }
 
@@ -23,7 +22,7 @@ vim.g.maplocalleader = " "
 -- Sessionizer
 keymap("n", "<C-f>", "<cmd>:silent !tmux neww tmux-sessionizer<CR>", opts)
 
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle <cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
