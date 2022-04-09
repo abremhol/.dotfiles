@@ -46,6 +46,7 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-tree.lua'
   use "akinsho/bufferline.nvim"
   use "moll/vim-bbye" -- to be able to close buffers with bdelete without closing neovim
+  use "gpanders/editorconfig.nvim" -- "read .editorconfig"
   -- "treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'p00f/nvim-ts-rainbow'
@@ -68,13 +69,14 @@ return packer.startup(function(use)
   use 'nvim-lua/lsp_extensions.nvim'
   use 'glepnir/lspsaga.nvim'
   use 'simrat39/symbols-outline.nvim'
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
   use 'rafamadriz/friendly-snippets'
 
   -- Telescope
-  use  'nvim-lua/popup.nvim'
+  use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
 
@@ -84,14 +86,19 @@ return packer.startup(function(use)
   use 'cedarbaum/fugitive-azure-devops.vim'
   use 'tpope/vim-rhubarb'
 
+  -- Statusline
+  use 'nvim-lualine/lualine.nvim'
+  use 'vimpostor/vim-tpipeline'
+
+  -- Text Handling
+  use 'tpope/vim-surround'
+  use "windwp/nvim-autopairs"
+  use "numToStr/Comment.nvim" -- Easily comment stuff
 
   -- other
   use {'junegunn/fzf', run = ":call fzf#install()" }
   use 'junegunn/fzf.vim'
   use 'stsewd/fzf-checkout.vim'
-  use 'tpope/vim-surround'
-  use "windwp/nvim-autopairs"
-  use "numToStr/Comment.nvim" -- Easily comment stuff
 
   -- use 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
   --
@@ -99,6 +106,7 @@ return packer.startup(function(use)
   use 'szw/vim-maximizer'
   use 'vuciv/vim-bujo'
   use 'marko-cerovac/material.nvim'
+  use 'akinsho/toggleterm.nvim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

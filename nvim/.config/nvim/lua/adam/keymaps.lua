@@ -77,5 +77,6 @@ keymap("n", "<leader>gb", "<cmd>:GBranches<CR>", opts)
 vim.g["bujo#todo_file_path "] = '/home/adam/.cache/bujo'
 
 -- Other
+keymap("n", "gf", ":Format<cr>", opts)
 -- Easy close terminal
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)
