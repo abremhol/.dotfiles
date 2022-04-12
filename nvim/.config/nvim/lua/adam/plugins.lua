@@ -59,7 +59,8 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-nvim-lua"  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  use "hrsh7th/cmp-nvim-lua"
+  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
   -- lsp
   use 'neovim/nvim-lspconfig'
@@ -95,6 +96,14 @@ return packer.startup(function(use)
   use "windwp/nvim-autopairs"
   use "numToStr/Comment.nvim" -- Easily comment stuff
 
+  -- Debugging
+  use { 'mfussenegger/nvim-dap',
+    requires = {
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
+    }
+  }
+
   -- other
   use {'junegunn/fzf', run = ":call fzf#install()" }
   use 'junegunn/fzf.vim'
@@ -106,7 +115,6 @@ return packer.startup(function(use)
   use 'szw/vim-maximizer'
   use 'vuciv/vim-bujo'
   use 'marko-cerovac/material.nvim'
-  use 'akinsho/toggleterm.nvim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

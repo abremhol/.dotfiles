@@ -69,6 +69,16 @@ keymap("n", "<leader>fg", "<cmd>lua require'telescope.builtin'.live_grep(require
 keymap("n", "<leader>fb", "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>", opts)
 
+-- DAP
+keymap("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>", opts)
+keymap("n", "<F8>", "<cmd>lua require'dapui'.toggle()<CR>", opts)
+keymap("n", "<F10>", "<cmd>lua require'dap'.step_over()<CR>", opts)
+keymap("n", "<F11>", "<cmd>lua require'dap'.step_into()<CR>", opts)
+keymap("n", "<F12>", "<cmd>lua require'dap'.step_out()<CR>", opts)
+keymap("n", "<leader>B", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+keymap("n", "<M-k>", "<cmd>lua require'dapui'.eval()<CR>", opts)
+keymap("v", "<M-k>", "<cmd>lua require'dapui'.eval()<CR>", opts)
+
 -- Git
 keymap("n", "<leader>gb", "<cmd>:GBranches<CR>", opts)
 
