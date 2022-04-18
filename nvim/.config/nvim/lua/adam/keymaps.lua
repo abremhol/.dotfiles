@@ -34,9 +34,10 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- source init.vim
 keymap("n", "<Leader><CR>", ":so ~/.config/nvim/init.vim<CR>", opts)
 keymap("n", "<leader>m", ":MaximizerToggle!<CR>", opts)
+keymap("v", "<leader>c", "<cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>", opts)
+keymap("n", "<leader>c", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
 
 -- focus when searching
 keymap("n", "n", "nzzzv", opts)
