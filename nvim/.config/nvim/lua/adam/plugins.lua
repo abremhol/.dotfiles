@@ -66,7 +66,7 @@ return packer.startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
   use 'Hoffs/omnisharp-extended-lsp.nvim' -- fixes go to def in libraries
-  use 'onsails/lspkind-nvim'
+  use 'onsails/lspkind.nvim'
   use 'nvim-lua/lsp_extensions.nvim'
   use 'glepnir/lspsaga.nvim'
   use 'simrat39/symbols-outline.nvim'
@@ -105,16 +105,13 @@ return packer.startup(function(use)
   }
 
   -- other
-  use {'junegunn/fzf', run = ":call fzf#install()" }
-  use 'junegunn/fzf.vim'
-  use 'stsewd/fzf-checkout.vim'
-
-  -- use 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
-  --
-  use 'jremmen/vim-ripgrep'
   use 'szw/vim-maximizer'
-  use 'vuciv/vim-bujo'
   use 'marko-cerovac/material.nvim'
+  use "folke/which-key.nvim"
+  use 'goolord/alpha-nvim'
+  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
+  use "ahmedkhalf/project.nvim"
+  use 'lewis6991/impatient.nvim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

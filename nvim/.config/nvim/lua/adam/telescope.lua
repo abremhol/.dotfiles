@@ -10,11 +10,17 @@ require('telescope').setup{
         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
+
+        ["?"] = actions.which_key,
       }
     },
     file_sorter = require('telescope.sorters').get_fzy_sorter
   },
   pickers = {
+    find_files = {
+      hidden = true,
+      file_ignore_patterns = {".git"}
+    }
     -- Default configuration for builtin pickers goes here:
     -- picker_name = {
     --   picker_config_key = value,
