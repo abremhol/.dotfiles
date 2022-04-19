@@ -111,8 +111,7 @@ cmp.setup {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       -- Kind icons
-			vim_item.kind = kind_icons[vim_item.kind]
-			-- vim_item.kind = lspkind.presets.default[vim_item.kind]
+			vim_item.kind = lspkind.presets.default[vim_item.kind]
      -- local kind icons
       -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
@@ -163,7 +162,8 @@ local snippets_paths = function()
 	local plugins = { "friendly-snippets" }
 	local paths = {}
 	local path
-	local root_path = vim.env.HOME .. "/.vim/plugged/"
+	local root_path = vim.env.HOME .. "/.local/share/nvim/site/pack/packer/start/"
+	local my_plugins = vim.env.HOME .. "/.dotfiles/nvim/lua/plugin/"
 	for _, plug in ipairs(plugins) do
 		path = root_path .. plug
 		if vim.fn.isdirectory(path) ~= 0 then

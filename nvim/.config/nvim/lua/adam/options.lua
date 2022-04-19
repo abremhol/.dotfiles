@@ -48,10 +48,8 @@ for k, v in pairs(options) do
 end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
--- Colorscheme
 
- vim.cmd "colorscheme material"
- vim.g.material_style = "deep ocean"
+vim.g.material_style = "deep ocean"
 
 vim.cmd([[
 if executable('rg')
