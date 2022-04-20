@@ -34,7 +34,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
-keymap("n", "<Leader><CR>", ":so ~/.config/nvim/init.vim<CR>", opts)
 keymap("n", "<leader>m", ":MaximizerToggle!<CR>", opts)
 keymap("v", "<leader>c", "<cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>", opts)
 keymap("n", "<leader>c", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
@@ -83,11 +82,9 @@ keymap("v", "<M-k>", "<cmd>lua require'dapui'.eval()<CR>", opts)
 -- Git
 keymap("n", "<leader>gb", "<cmd>:GBranches<CR>", opts)
 
--- Bujo
---
-vim.g["bujo#todo_file_path "] = '/home/adam/.cache/bujo'
-
 -- Other
 keymap("n", "gf", ":Format<cr>", opts)
+-- reload adam module
+keymap("n", "<leader><CR>", "<cmd>lua require('plenary.reload').reload_module('adam')<CR>", opts)
 -- Easy close terminal
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)

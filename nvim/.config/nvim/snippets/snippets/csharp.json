@@ -1,0 +1,29 @@
+{
+"NUnit Test": {
+    "prefix": "test",
+    "body": [
+      "[Test]",
+      "public void ${1:TestName}()",
+      "{",
+      "//Given",
+      "",
+      "//When",
+      "",
+      "//Then",
+      "}$0"
+    ],
+    "description": "create nunit test"
+  },
+"Arrange Act Assert": {
+    "prefix": "aaa",
+    "body": [
+      "//Arrange",
+      "",
+      "//Act",
+      "",
+      "//Assert"
+    ],
+    "description": "create nunit test"
+  }
+
+}
