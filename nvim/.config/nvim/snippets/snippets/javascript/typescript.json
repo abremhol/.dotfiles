@@ -1,0 +1,28 @@
+{
+"Karma Test": {
+    "prefix": "test",
+    "body": [
+    "it('should ', () => {",
+      "//Arrange",
+      "const result:any = []",
+      "//Act",
+      "",
+      "//Assert",
+      "expect(result).toEqual([])",
+  "});"
+    ],
+    "description": "create karma test"
+  },
+"Arrange Act Assert": {
+    "prefix": "aaa",
+    "body": [
+      "//Arrange",
+      "",
+      "//Act",
+      "",
+      "//Assert"
+    ],
+    "description": "arrange act assert"
+  }
+
+}

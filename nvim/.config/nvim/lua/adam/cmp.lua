@@ -170,7 +170,7 @@ local snippets_paths = function()
 			table.insert(paths, path)
 		end
 	end
-  table.insert(paths, my_snippets_path)
+	table.insert(paths, my_snippets_path)
 	return paths
 end
 

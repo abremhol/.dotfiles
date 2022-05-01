@@ -187,7 +187,8 @@
       {
         "language": [
           "typescript",
-          "typescriptreact"
+          "typescriptreact",
+          "typescriptangular"
         ],
         "path": "./snippets/javascript/typescript.json"
       },
