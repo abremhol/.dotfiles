@@ -3,12 +3,12 @@
     "prefix": "test",
     "body": [
     "it('should ', () => {",
-      "//Arrange",
-      "const result:any = []",
-      "//Act",
-      "",
-      "//Assert",
-      "expect(result).toEqual([])",
+      "  //Arrange",
+      "  const result:any = []",
+      "  //Act",
+      "  ",
+      "  //Assert",
+      "  expect(result).toEqual([])",
   "});"
     ],
     "description": "create karma test"
