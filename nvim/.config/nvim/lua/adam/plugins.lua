@@ -44,7 +44,6 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
-  use "akinsho/bufferline.nvim"
   use "moll/vim-bbye" -- to be able to close buffers with bdelete without closing neovim
   use "gpanders/editorconfig.nvim" -- "read .editorconfig"
   -- "treesitter
@@ -108,10 +107,7 @@ return packer.startup(function(use)
   use 'szw/vim-maximizer'
   use 'marko-cerovac/material.nvim'
   use "folke/which-key.nvim"
-  use 'goolord/alpha-nvim'
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-  use "ahmedkhalf/project.nvim"
-  use 'lewis6991/impatient.nvim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

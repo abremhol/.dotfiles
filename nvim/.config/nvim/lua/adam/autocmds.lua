@@ -11,4 +11,3 @@ api.nvim_create_autocmd({"BufLeave", "FocusLost", "InsertEnter"}, {
   group = toggleRelativeGroup
 })
 
-

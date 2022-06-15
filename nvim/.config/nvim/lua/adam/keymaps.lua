@@ -23,6 +23,7 @@ vim.g.maplocalleader = " "
 keymap("n", "<C-f>", "<cmd>:silent !tmux neww tmux-sessionizer<CR>", opts)
 
 keymap("n", "<leader>e", ":NvimTreeToggle <cr>", opts)
+keymap("n", "<leader>r", ":NvimTreeRefresh <cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
