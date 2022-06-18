@@ -31,9 +31,13 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
+
 keymap("n", "<leader>m", ":MaximizerToggle!<CR>", opts)
-keymap("v", "<leader>c", "<cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>", opts)
+
+-- Comment
 keymap("n", "<leader>c", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
+keymap("v", "<leader>c", "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
+keymap("x", "<leader>c", "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
 
 -- focus when searching
 keymap("n", "n", "nzzzv", opts)
@@ -79,6 +83,7 @@ keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(requir
 keymap("n", "<leader>fg", "<cmd>lua require'telescope.builtin'.live_grep(require('telescope.themes').get_dropdown())<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>", opts)
+keymap("n", "<leader>fz", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_ivy())<CR>", opts)
 keymap("n", "<leader>fB", "<cmd>lua Telescope git_branches<cr>", opts) -- checkout branch
 keymap("n", "<leader>fM", "<cmd>lua Telescope man_pages<cr>", opts)
 keymap("n", "<leader>fr", "<cmd>lua Telescope oldfiles<cr>", opts) -- recent files

@@ -67,9 +67,10 @@ return packer.startup(function(use)
   use 'Hoffs/omnisharp-extended-lsp.nvim' -- fixes go to def in libraries
   use 'onsails/lspkind.nvim'
   use 'nvim-lua/lsp_extensions.nvim'
-  use 'glepnir/lspsaga.nvim'
   use 'simrat39/symbols-outline.nvim'
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "RRethy/vim-illuminate" -- highlights same variable
+  use "ray-x/lsp_signature.nvim"
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
@@ -103,11 +104,16 @@ return packer.startup(function(use)
     }
   }
 
-  -- other
-  use 'szw/vim-maximizer'
+
+  -- Themes
+  use "folke/tokyonight.nvim"
+  use "lunarvim/darkplus.nvim"
   use 'marko-cerovac/material.nvim'
-  use "folke/which-key.nvim"
+
+  -- Other
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
+  use 'szw/vim-maximizer' -- maximize current window
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

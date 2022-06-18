@@ -5,4 +5,5 @@ end
 
 require("adam.lsp.lsp-installer")
 require("adam.lsp.null-ls")
+require("adam.lsp.lsp-signature")
 require("adam.lsp.handlers").setup()

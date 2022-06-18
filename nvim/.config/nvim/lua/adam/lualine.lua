@@ -49,17 +49,26 @@ local location = {
 }
 
 -- cool function for progress
-local progress = function()
-	local current_line = vim.fn.line(".")
-	local total_lines = vim.fn.line("$")
-	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-	local line_ratio = current_line / total_lines
-	local index = math.ceil(line_ratio * #chars)
-	return chars[index]
-end
+-- local progress = function()
+-- 	local current_line = vim.fn.line(".")
+-- 	local total_lines = vim.fn.line("$")
+-- 	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+-- 	local line_ratio = current_line / total_lines
+-- 	local index = math.ceil(line_ratio * #chars)
+-- 	return chars[index]
+-- end
 
 local spaces = function()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+end
+
+local current_signature = function()
+  if not pcall(require, "lsp_signature") then
+    return
+  end
+  local sig = require("lsp_signature").status_line(30)
+  -- return sig.label .. "🐼" .. sig.hint
+  return "%#SLSeparator#" .. sig.hint .. "%*"
 end
 
 lualine.setup({
@@ -75,6 +84,7 @@ lualine.setup({
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
 		lualine_c = { "filename" },
+    lualine_d = { { current_signature, cond = hide_in_width } },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
