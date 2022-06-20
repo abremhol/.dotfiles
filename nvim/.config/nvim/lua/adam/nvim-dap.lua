@@ -11,7 +11,7 @@ require("dapui").setup({
       remove = "d",
       edit = "e",
     },
-    sidebar = {
+    layout = {
       elements = {
         -- You can change the order of elements in the sidebar
         "scopes",
@@ -47,9 +47,9 @@ require("dapui").setup({
       name = "launch - netcoredbg",
       request = "launch",
       program = function()
-        local cwd = vim.fn.getcwd()
-        local d = vim.fn.fnamemodify(cwd, ":t")
-        return vim.fn.input('Path to dll: ', cwd .. '/bin/Debug/net6.0/' .. d .. '.dll', 'file')
+        local fullbufdir = vim.fn.expand('%:p:h')
+        local lastbufdir = vim.fn.expand('%:p:h:t')
+        return vim.fn.input('Path to dll: ', fullbufdir .. '/bin/Debug/net6.0/' .. lastbufdir .. '.dll', 'file')
       end,
     },
     {

@@ -70,7 +70,6 @@ return packer.startup(function(use)
   use 'simrat39/symbols-outline.nvim'
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "RRethy/vim-illuminate" -- highlights same variable
-  use "ray-x/lsp_signature.nvim"
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
@@ -106,6 +105,7 @@ return packer.startup(function(use)
 
 
   -- Themes
+  use "ayu-theme/ayu-vim"
   use "folke/tokyonight.nvim"
   use "lunarvim/darkplus.nvim"
   use 'marko-cerovac/material.nvim'
