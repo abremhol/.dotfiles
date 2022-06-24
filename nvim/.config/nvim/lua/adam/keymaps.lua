@@ -91,6 +91,8 @@ keymap("n", "<leader>fR", "<cmd>lua Telescope registers<cr>", opts)
 keymap("n", "<leader>fk", "<cmd>lua Telescope Keymaps<cr>", opts)
 keymap("n", "<leader>fC", "<cmd>lua Telescope commands<cr>", opts)
 
+--Dotnet
+keymap("n", "<leader>nb", "<cmd>:!dotnet build . <CR>", opts)
 
 -- DAP
 keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", opts)

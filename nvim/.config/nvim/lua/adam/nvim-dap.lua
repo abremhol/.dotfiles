@@ -1,35 +1,54 @@
 require("dapui").setup({
-	icons = {
-		expanded = "⯆",
-		collapsed = "⯈",
-		circular = "↺",
-	},
+	icons = { expanded = "▾", collapsed = "▸" },
 	mappings = {
 		-- Use a table to apply multiple mappings
 		expand = { "<CR>", "<2-LeftMouse>" },
 		open = "o",
 		remove = "d",
 		edit = "e",
+		repl = "r",
+		toggle = "t",
 	},
-	layout = {
-		elements = {
-			-- You can change the order of elements in the sidebar
-			"scopes",
-			--"watches"
+	-- Expand lines larger than the window
+	-- Requires >= 0.7
+	expand_lines = vim.fn.has("nvim-0.7"),
+	-- Layouts define sections of the screen to place windows.
+	-- The position can be "left", "right", "top" or "bottom".
+	-- The size specifies the height/width depending on position.
+	-- Elements are the elements shown in the layout (in order).
+	-- Layouts are opened in order so that earlier layouts take priority in window sizing.
+	layouts = {
+		{
+			elements = {
+				-- Elements can be strings or table with id and size keys.
+				{ id = "scopes", size = 0.25 },
+				"breakpoints",
+				"stacks",
+				"watches",
+			},
+			size = 40,
+			position = "left",
 		},
-		size = 40,
-		position = "left", -- Can be "left" or "right"
+		{
+			elements = {
+				"repl",
+				"console",
+			},
+			size = 10,
+			position = "bottom",
+		},
 	},
-	-- tray = {
-	--   elements = {
-	--     "repl"
-	--   },
-	--   size = 10,
-	--   position = "bottom" -- Can be "bottom" or "top"
-	-- },
 	floating = {
 		max_height = nil, -- These can be integers or a float between 0 and 1.
 		max_width = nil, -- Floats will be treated as percentage of your screen.
+		border = "single", -- Border style. Can be "single", "double" or "rounded"
+		mappings = {
+			close = { "q", "<Esc>" },
+		},
+	},
+	windows = { indent = 1 },
+	render = {
+		max_type_length = nil, -- Can be integer or nil.
 	},
 })
 
@@ -68,10 +87,10 @@ dap.configurations.cs = {
 				if i == nil then
 					break
 				end
-      endingDirIndex = i
+				endingDirIndex = i
 			end
-      local endingDir = string.sub(dir, endingDirIndex+1, string.len(dir))
-
+			local endingDir = string.sub(dir, endingDirIndex + 1, string.len(dir))
+			vim.cmd(string.format("!dotnet build %s", dir))
 			return vim.fn.input("Path to dll: ", dir .. "/bin/Debug/net6.0/" .. endingDir .. ".dll", "file")
 		end,
 	},
