@@ -60,36 +60,46 @@ dap.adapters.netcoredbg = {
 	args = { "--interpreter=vscode" },
 }
 
+local firstParentFolderContainingFile = function(s)
+	local dir = vim.fn.expand("%:p:h")
+
+	local lastfolder = ""
+	local csprojFile = ""
+	while dir ~= lastfolder and (csprojFile == nil or csprojFile == "") do
+		csprojFile = vim.fn.globpath(dir, s)
+		lastfolder = dir
+		dir = vim.fn.fnamemodify(dir, ":h")
+	end
+	if csprojFile == nil or csprojFile == "" or dir == lastfolder then
+		dir = vim.fn.expand("%:p:h")
+	else
+		dir = lastfolder
+	end
+	return dir
+end
+
+local currentDirectoryFromFullPath = function(dir)
+	local endingDirIndex = ""
+	local i = 0
+	while true do
+		i = string.find(dir, "/", i + 1) -- find 'next' /
+		if i == nil then
+			break
+		end
+		endingDirIndex = i
+	end
+	return string.sub(dir, endingDirIndex + 1, string.len(dir))
+end
+
 dap.configurations.cs = {
 	{
 		type = "netcoredbg",
 		name = "launch - netcoredbg",
 		request = "launch",
 		program = function()
-			local dir = vim.fn.expand("%:p:h")
-
-			local lastfolder = ""
-			local csprojFile = ""
-			while dir ~= lastfolder and (csprojFile == nil or csprojFile == "") do
-				csprojFile = vim.fn.globpath(dir, "*.csproj")
-				lastfolder = dir
-				dir = vim.fn.fnamemodify(dir, ":h")
-			end
-			if csprojFile == nil or csprojFile == "" or dir == lastfolder then
-				dir = vim.fn.expand("%:p:h")
-			else
-				dir = lastfolder
-			end
-			local endingDirIndex = ""
-			local i = 0
-			while true do
-				i = string.find(dir, "/", i + 1) -- find 'next' /
-				if i == nil then
-					break
-				end
-				endingDirIndex = i
-			end
-			local endingDir = string.sub(dir, endingDirIndex + 1, string.len(dir))
+      vim.api.nvim_command('write')
+			local dir = firstParentFolderContainingFile("*.csproj")
+			local endingDir = currentDirectoryFromFullPath(dir)
 			vim.cmd(string.format("!dotnet build %s", dir))
 			return vim.fn.input("Path to dll: ", dir .. "/bin/Debug/net6.0/" .. endingDir .. ".dll", "file")
 		end,
