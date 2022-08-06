@@ -105,7 +105,7 @@ return packer.startup(function(use)
   }
 
 
-  -- Themes
+  -- ColorThemes
   use "ayu-theme/ayu-vim"
   use "folke/tokyonight.nvim"
   use "lunarvim/darkplus.nvim"
