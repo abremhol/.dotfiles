@@ -101,7 +101,7 @@ dap.configurations.cs = {
 			local dir = firstParentFolderContainingFile("*.csproj")
 			local endingDir = currentDirectoryFromFullPath(dir)
 			vim.cmd(string.format("!dotnet build %s", dir))
-			return vim.fn.input("Path to dll: ", dir .. "/bin/Debug/net6.0/" .. endingDir .. ".dll", "file")
+			return vim.fn.input("Path to dll: ", dir .. "/bin/Debug/**/" .. endingDir .. ".dll", "file") -- can subsitute ** for net6.0
 		end,
 	},
 	{

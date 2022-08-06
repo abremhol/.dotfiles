@@ -22,6 +22,8 @@ vim.g.maplocalleader = " "
 -- Sessionizer
 keymap("n", "<C-f>", "<cmd>:silent !tmux neww tmux-sessionizer<CR>", opts)
 
+keymap("n", "<leader><leader>x", "<cmd>luafile %<CR>", opts)
+
 keymap("n", "<leader>e", ":NvimTreeToggle <cr>", opts)
 keymap("n", "<leader>r", ":NvimTreeRefresh <cr>", opts)
 
@@ -84,15 +86,13 @@ keymap("n", "<leader>fg", "<cmd>lua require'telescope.builtin'.live_grep(require
 keymap("n", "<leader>fb", "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>", opts)
 keymap("n", "<leader>fz", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_ivy())<CR>", opts)
-keymap("n", "<leader>fB", "<cmd>lua Telescope git_branches<cr>", opts) -- checkout branch
-keymap("n", "<leader>fM", "<cmd>lua Telescope man_pages<cr>", opts)
-keymap("n", "<leader>fr", "<cmd>lua Telescope oldfiles<cr>", opts) -- recent files
-keymap("n", "<leader>fR", "<cmd>lua Telescope registers<cr>", opts)
-keymap("n", "<leader>fk", "<cmd>lua Telescope Keymaps<cr>", opts)
-keymap("n", "<leader>fC", "<cmd>lua Telescope commands<cr>", opts)
-
---Dotnet
-keymap("n", "<leader>nb", "<cmd>:!dotnet build . <CR>", opts)
+keymap("n", "<leader>fB", "<cmd>Telescope git_branches<cr>", opts) -- checkout branch
+keymap("n", "<leader>fM", "<cmd>Telescope man_pages<cr>", opts)
+keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", opts) -- recent files
+keymap("n", "<leader>fR", "<cmd>Telescope registers<cr>", opts)
+keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
+keymap("n", "<leader>fC", "<cmd>Telescope commands<cr>", opts)
+keymap("n", "<leader>fd", "<cmd>lua require('adam.telescope').search_dotfiles({ hidden = true })<cr>", opts)
 
 -- DAP
 keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", opts)
@@ -101,6 +101,8 @@ keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>", opts)
 keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>", opts)
 keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<CR>", opts)
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+keymap("n", "<leader>dC", "<cmd>lua require'dap'.clear_breakpoints()<CR>", opts)
+keymap("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
 keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<CR>", opts)
 keymap("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<CR>", opts)
@@ -111,6 +113,6 @@ keymap("n", "<leader>gb", "<cmd>:GBranches<CR>", opts)
 -- Other
 keymap("n", "gf", ":Format<cr>", opts)
 -- reload adam module
-keymap("n", "<leader><CR>", "<cmd>lua require('plenary.reload').reload_module('adam')<CR>", opts)
+keymap("n", "<leader><CR>", "<cmd>lua require('adam.telescope').reload_modules()<CR>", opts)
 -- Easy close terminal
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)
