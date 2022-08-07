@@ -89,7 +89,7 @@ return packer.startup(function(use)
 
   -- Statusline
   use 'nvim-lualine/lualine.nvim'
-  use 'vimpostor/vim-tpipeline'
+  -- use 'vimpostor/vim-tpipeline'
 
   -- Text Handling
   use 'tpope/vim-surround'

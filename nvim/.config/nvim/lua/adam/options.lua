@@ -10,7 +10,7 @@ local options = {
 	ignorecase = true, -- ignore case in search patterns
 	secure = false, -- set exrc, allow vim to run commands
 	mouse = "a", -- allow the mouse to be used in neovim
-	statusline = "+=%F", -- statusline to current file path
+	-- statusline = "+=%F", -- statusline to current file path
 	colorcolumn = "80", -- vertical line to show recommended line length
 	incsearch = true,
 	errorbells = false, -- no error bells
