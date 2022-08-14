@@ -6,5 +6,5 @@ vim.api.nvim_create_user_command("AutoRun", function()
 		vim.cmd("vnew /tmp/netbuild")
 	  bufnr = FIND_BUFFER_BY_NAME("/tmp/netbuild")
 	end
-	Attach_to_buffer(tonumber(bufnr), pattern, command)
+	ATTACH_TO_BUFFER(tonumber(bufnr), pattern, command)
 end, {})

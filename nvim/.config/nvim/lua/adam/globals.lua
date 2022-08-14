@@ -34,7 +34,6 @@ end
 
 FIND_BUFFER_BY_NAME = function(name)
 	local named_buffers = FIND_BUFFERS()
-  P(named_buffers)
 	for k, v in pairs(named_buffers) do
 		if v == name then
 			return k

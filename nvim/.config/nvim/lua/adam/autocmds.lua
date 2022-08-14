@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	end,
 })
 
-Attach_to_buffer = function(output_bufnr, pattern, command)
+ATTACH_TO_BUFFER = function(output_bufnr, pattern, command)
 	vim.api.nvim_create_autocmd("BufWritePost", {
 		group = vim.api.nvim_create_augroup("BuildDotnetGroup", { clear = true }),
 		pattern = pattern,
@@ -39,8 +39,8 @@ Attach_to_buffer = function(output_bufnr, pattern, command)
 					vim.api.nvim_buf_set_lines(output_bufnr, -1, -1, false, data)
 				end
 			end
-
-			vim.api.nvim_buf_set_lines(output_bufnr, 0, -1, false, { "output of: cs file" })
+			local commandstr = table.concat(command, " ")
+			vim.api.nvim_buf_set_lines(output_bufnr, 0, -1, false, { "output of: " .. commandstr })
 			vim.fn.jobstart(command, {
 				stdout_buffered = true,
 				on_stdout = append_data,
@@ -49,3 +49,10 @@ Attach_to_buffer = function(output_bufnr, pattern, command)
 		end,
 	})
 end
+
+local bufnr = FIND_BUFFER_BY_NAME("/tmp/netbuild")
+if bufnr == nil or bufnr == "" then
+	vim.cmd("vnew /tmp/netbuild")
+	bufnr = FIND_BUFFER_BY_NAME("/tmp/netbuild")
+end
+ATTACH_TO_BUFFER(bufnr, "*.cs", {"dotnet", "build", "-v", "q"})

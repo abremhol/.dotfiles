@@ -10,13 +10,14 @@ local options = {
 	ignorecase = true, -- ignore case in search patterns
 	secure = false, -- set exrc, allow vim to run commands
 	mouse = "a", -- allow the mouse to be used in neovim
-	-- statusline = "+=%F", -- statusline to current file path
+  -- statusline = "+=%F", -- statusline to current file path
 	colorcolumn = "80", -- vertical line to show recommended line length
 	incsearch = true,
 	errorbells = false, -- no error bells
 	pumheight = 10, -- pop up menu height
 	showmode = false, -- we don't need to see things like -- INSERT -- anymore
 	-- showtabline = 2, -- always show tabs (shows filename in top left, disabling for now)
+  laststatus = 3,
 	smartcase = true, -- smart case
 	smartindent = true, -- make indenting smarter again
 	splitbelow = true, -- force all horizontal splits to go below current window
@@ -49,8 +50,6 @@ for k, v in pairs(options) do
 end
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
-
-vim.g.material_style = "deep ocean"
 
 vim.cmd([[
 if executable('rg')
