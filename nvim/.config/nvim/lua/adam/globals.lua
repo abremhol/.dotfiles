@@ -1,8 +1,8 @@
 local ok, plenary_reload = pcall(require, "plenary.reload")
 if not ok then
-	reloader = require
+	RELOADER = require
 else
-	reloader = plenary_reload.reload_module
+	RELOADER = plenary_reload.reload_module
 end
 
 P = function(v)
@@ -11,7 +11,7 @@ P = function(v)
 end
 
 RELOAD = function(...)
-	return reloader(...)
+	return RELOADER(...)
 end
 
 R = function(name)
@@ -40,4 +40,35 @@ FIND_BUFFER_BY_NAME = function(name)
 		end
 	end
 	return nil
+end
+
+FIRST_UPSTREAM_FOLDER_CONTAINING_FILE = function(s)
+	local dir = vim.fn.expand("%:p:h")
+
+	local lastfolder = ""
+	local csprojFile = ""
+	while dir ~= lastfolder and (csprojFile == nil or csprojFile == "") do
+		csprojFile = vim.fn.globpath(dir, s)
+		lastfolder = dir
+		dir = vim.fn.fnamemodify(dir, ":h")
+	end
+	if csprojFile == nil or csprojFile == "" or dir == lastfolder then
+		dir = vim.fn.expand("%:p:h")
+	else
+		dir = lastfolder
+	end
+	return dir
+end
+
+TRIM_TO_CURRENT_DIRECTORY_FROM_FULL_PATH = function(dir)
+	local endingDirIndex = ""
+	local i = 0
+	while true do
+		i = string.find(dir, "/", i + 1) -- find 'next' /
+		if i == nil then
+			break
+		end
+		endingDirIndex = i
+	end
+	return string.sub(dir, endingDirIndex + 1, string.len(dir))
 end
