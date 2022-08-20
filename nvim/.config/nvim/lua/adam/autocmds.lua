@@ -50,9 +50,10 @@ ATTACH_TO_BUFFER = function(output_bufnr, pattern, command)
 	})
 end
 
-local bufnr = FIND_BUFFER_BY_NAME("/tmp/netbuild")
-if bufnr == nil or bufnr == "" then
-	vim.cmd("vnew /tmp/netbuild")
-	bufnr = FIND_BUFFER_BY_NAME("/tmp/netbuild")
-end
-ATTACH_TO_BUFFER(bufnr, "*.cs", {"dotnet", "build", "-v", "q"})
+-- TODO for opening dotnet build when cs file
+-- local bufnr = FIND_BUFFER_BY_NAME("/tmp/netbuild")
+-- if bufnr == nil or bufnr == "" then
+-- 	vim.cmd("vnew /tmp/netbuild")
+-- 	bufnr = FIND_BUFFER_BY_NAME("/tmp/netbuild")
+-- end
+-- ATTACH_TO_BUFFER(bufnr, "*.cs", {"dotnet", "build", "-v", "q"})
