@@ -81,14 +81,12 @@ return packer.startup(function(use)
   use 'nvim-telescope/telescope.nvim'
 
   -- Git
+  use("TimUntersberger/neogit")
   use "lewis6991/gitsigns.nvim"
-  use 'tpope/vim-fugitive'
-  use 'cedarbaum/fugitive-azure-devops.vim'
-  use 'tpope/vim-rhubarb'
 
   -- Statusline
   use 'nvim-lualine/lualine.nvim'
-  use 'vimpostor/vim-tpipeline'
+  use 'vimpostor/vim-tpipeline' -- for merging statusline with tmux status line
 
   -- Text Handling
   use 'tpope/vim-surround'
@@ -111,7 +109,8 @@ return packer.startup(function(use)
   use 'marko-cerovac/material.nvim'
 
   -- Other
-  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
+  use("mbbill/undotree")
+  --[[ use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight ]]
   use 'szw/vim-maximizer' -- maximize current window
 
   -- Automatically set up your configuration after cloning packer.nvim
