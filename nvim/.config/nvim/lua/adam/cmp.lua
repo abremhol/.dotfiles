@@ -27,8 +27,6 @@ local source_mapping = {
 	path = "[Path]",
 }
 
-local icons = require "adam.icons"
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
