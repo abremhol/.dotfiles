@@ -69,7 +69,6 @@ return packer.startup(function(use)
   use 'nvim-lua/lsp_extensions.nvim'
   use 'simrat39/symbols-outline.nvim'
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "RRethy/vim-illuminate" -- highlights same variable
   use "ray-x/lsp_signature.nvim"
 
   -- Snippets
@@ -89,7 +88,7 @@ return packer.startup(function(use)
 
   -- Statusline
   use 'nvim-lualine/lualine.nvim'
-  -- use 'vimpostor/vim-tpipeline'
+  use 'vimpostor/vim-tpipeline'
 
   -- Text Handling
   use 'tpope/vim-surround'

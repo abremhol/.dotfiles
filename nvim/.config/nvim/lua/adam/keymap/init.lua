@@ -22,7 +22,7 @@ nnoremap("<C-Right>", ":vertical resize +2<CR>")
 nnoremap("<leader>m", ":MaximizerToggle!<CR>")
 
 -- Comment
-nnoremap("<leader>c", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>")
+nnoremap("<leader>c", "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>")
 vnoremap("<leader>c", "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 xnoremap("<leader>c", "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 
