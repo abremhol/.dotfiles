@@ -1,6 +1,3 @@
--- following options are the default
--- each of these are documented in `:help nvim-tree.OPTION_NAME`
-
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
 	return
@@ -41,11 +38,6 @@ nvim_tree.setup({
 			},
 		},
 	},
-	ignore_ft_on_setup = {
-		"startify",
-		"dashboard",
-		"alpha",
-	},
 	open_on_tab = false,
 	hijack_cursor = false,
 	update_cwd = true,
@@ -65,7 +57,7 @@ nvim_tree.setup({
 	},
 	git = {
 		enable = true,
-		ignore = true,
+		ignore = false,
 		timeout = 500,
 	},
 	view = {
