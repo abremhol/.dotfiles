@@ -18,13 +18,12 @@ nnoremap("<C-Down>", ":resize +2<CR>")
 nnoremap("<C-Left>", ":vertical resize -2<CR>")
 nnoremap("<C-Right>", ":vertical resize +2<CR>")
 
-
 nnoremap("<leader>m", ":MaximizerToggle!<CR>")
 
 -- Comment
 nnoremap("<leader>c", "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>")
-vnoremap("<leader>c", "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
-xnoremap("<leader>c", "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
+vnoremap("<leader>c", "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>")
+xnoremap("<leader>c", "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>")
 
 -- focus when searching
 nnoremap("n", "nzzzv")
@@ -64,13 +63,32 @@ nnoremap("<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
 nnoremap("<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>") -- Document Symbols
 nnoremap("<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>") -- Workspace Symbols
 
+nnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+--[[ nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<cr>") ]]
+nnoremap("gd", "<cmd>lua require('omnisharp_extended').telescope_lsp_definitions()<cr>")
+nnoremap("gh", "<cmd>lua vim.lsp.buf.hover()<CR>")
+nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+nnoremap("<leader>sh", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+nnoremap("<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>")
+nnoremap("gr", "<cmd>Telescope lsp_references<CR>")
+nnoremap("gp", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>')
+nnoremap("gn", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>')
+nnoremap("gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
+nnoremap("<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+
 -- Telescope
 nnoremap("<C-p>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown())<cr>")
 nnoremap("<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown())<cr>")
 nnoremap("<leader>fg", "<cmd>lua require'telescope.builtin'.live_grep(require('telescope.themes').get_dropdown())<cr>")
-nnoremap("<leader>fb", "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({ previewer = false }))<cr>")
+nnoremap(
+	"<leader>fb",
+	"<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({ previewer = false }))<cr>"
+)
 nnoremap("<leader>fh", "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>")
-nnoremap("<leader>fz", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_ivy())<CR>")
+nnoremap(
+	"<leader>fz",
+	"<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_ivy())<CR>"
+)
 nnoremap("<leader>fB", "<cmd>Telescope git_branches<cr>") -- checkout branch
 nnoremap("<leader>fM", "<cmd>Telescope man_pages<cr>")
 nnoremap("<leader>fr", "<cmd>Telescope oldfiles<cr>") -- recent files
@@ -91,7 +109,6 @@ nnoremap("<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Break
 nnoremap("<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>")
 nnoremap("<leader>dl", "<cmd>lua require'dap'.run_last()<CR>")
 nnoremap("<leader>dx", "<cmd>lua require'dap'.terminate()<CR>")
-
 
 -- Git
 nnoremap("<leader>gb", "<cmd>:GBranches<CR>")
