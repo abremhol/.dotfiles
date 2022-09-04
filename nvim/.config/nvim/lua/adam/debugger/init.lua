@@ -41,6 +41,16 @@ require("adam.debugger.node");
 require("adam.debugger.dotnet");
 
 --Extra keymaps for arrow keys
+nnoremap("<leader>ö", function()
+    dapui.toggle(1)
+end)
+nnoremap("<leader>Ö", function()
+    dapui.toggle(2)
+end)
+
+nnoremap("<leader><leader>", function()
+    dap.close()
+end)
 
 nnoremap("<Up>", function()
     dap.continue()
@@ -53,4 +63,11 @@ nnoremap("<Right>", function()
 end)
 nnoremap("<Left>", function()
     dap.step_out()
+end)
+
+nnoremap("<Leader>b", function()
+    dap.toggle_breakpoint()
+end)
+nnoremap("<Leader>B", function()
+    dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
 end)
