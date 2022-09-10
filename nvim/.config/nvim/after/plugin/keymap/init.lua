@@ -114,17 +114,18 @@ nnoremap("<leader>fC", "<cmd>Telescope commands<cr>")
 nnoremap("<leader>fd", "<cmd>lua require('adam.telescope').search_dotfiles({ hidden = true })<cr>")
 
 -- DAP
---[[ nnoremap("<leader>dc", "<cmd>lua require'dap'.continue()<CR>") ]]
---[[ nnoremap("<leader>du", "<cmd>lua require'dapui'.toggle()<CR>") ]]
---[[ nnoremap("<leader>do", "<cmd>lua require'dap'.step_over()<CR>") ]]
---[[ nnoremap("<leader>di", "<cmd>lua require'dap'.step_into()<CR>") ]]
---[[ nnoremap("<leader>dO", "<cmd>lua require'dap'.step_out()<CR>") ]]
---[[ nnoremap("<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>") ]]
---[[ nnoremap("<leader>dC", "<cmd>lua require'dap'.clear_breakpoints()<CR>") ]]
---[[ nnoremap("<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>") ]]
---[[ nnoremap("<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>") ]]
---[[ nnoremap("<leader>dl", "<cmd>lua require'dap'.run_last()<CR>") ]]
---[[ nnoremap("<leader>dx", "<cmd>lua require'dap'.terminate()<CR>") ]]
+nnoremap("<leader>dc", "<cmd>lua require'dap'.continue()<CR>")
+nnoremap("<leader>du", "<cmd>lua require'dapui'.toggle()<CR>")
+nnoremap("<leader>do", "<cmd>lua require'dap'.step_over()<CR>")
+nnoremap("<leader>di", "<cmd>lua require'dap'.step_into()<CR>")
+nnoremap("<leader>dO", "<cmd>lua require'dap'.step_out()<CR>")
+nnoremap("<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
+nnoremap("<leader>dC", "<cmd>lua require'dap'.clear_breakpoints()<CR>")
+nnoremap("<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+nnoremap("<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>")
+nnoremap("<leader>dl", "<cmd>lua require'dap'.run_last()<CR>")
+nnoremap("<leader>dx", "<cmd>lua require'dap'.terminate()<CR>")
+nnoremap("<leader>ds", ":lua vim.g.set_process_id()<CR>")
 
 -- Git
 nnoremap("<leader>å", "<cmd>:Neogit<CR>")
@@ -135,3 +136,7 @@ nnoremap("gf", ":Format<cr>")
 nnoremap("<leader><CR>", "<cmd>lua require('adam.telescope').reload_modules()<CR>")
 -- Easy close terminal
 tnoremap("<Esc>", "<C-\\><C-n>")
+
+--build dotnet
+nnoremap("<C-b>", ":lua vim.g.dotnet_build_project()<CR>")
+
