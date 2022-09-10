@@ -72,3 +72,4 @@ TRIM_TO_CURRENT_DIRECTORY_FROM_FULL_PATH = function(dir)
 	end
 	return string.sub(dir, endingDirIndex + 1, string.len(dir))
 end
+

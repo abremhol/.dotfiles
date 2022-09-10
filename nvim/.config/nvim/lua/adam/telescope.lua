@@ -14,12 +14,12 @@ require("telescope").setup({
 	pickers = {
 		find_files = {
 			hidden = true,
-			file_ignore_patterns = { ".git", "node_modules" },
+			file_ignore_patterns = { ".git", "node_modules", "bin", "obj"},
       no_ignore = true
 		},
 		live_grep = {
 			hidden = true,
-			file_ignore_patterns = { ".git", "node_modules" },
+			file_ignore_patterns = { ".git", "node_modules", "bin", "obj" },
       no_ignore = true
 		},
 		-- Default configuration for builtin pickers goes here:

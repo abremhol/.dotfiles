@@ -3,33 +3,88 @@ local dap = require("dap")
 require("nvim-dap-virtual-text").setup()
 
 dap.adapters.netcoredbg = {
-	type = "executable",
-	command = home .. "/.local/share/netcoredbg/netcoredbg",
-	args = { "--interpreter=vscode" },
+  type = "executable",
+  command = home .. "/.local/share/netcoredbg/netcoredbg",
+  args = { "--interpreter=vscode" },
 }
 
+local globalpid = 0
 
 dap.configurations.cs = {
-	{
-		type = "netcoredbg",
-		name = "launch - netcoredbg",
-		request = "launch",
-		program = function()
-			vim.api.nvim_command("write")
-			local dir = FIRST_UPSTREAM_FOLDER_CONTAINING_FILE("*.csproj")
-			local endingDir = TRIM_TO_CURRENT_DIRECTORY_FROM_FULL_PATH(dir)
-			-- vim.cmd(string.format("!dotnet build %s", dir))
-			return vim.fn.input("Path to dll: ", dir .. "/bin/Debug/net6.0/" .. endingDir .. ".dll", "file") -- can subsitute ** for net6.0
-		end,
-	},
-	{
-		type = "netcoredbg",
-		name = "attach - netcoredbg",
-		request = "attach",
-		processId = function()
-			local pid = require("dap.utils").pick_process()
-			vim.fn.setenv("NETCOREDBG_ATTACH_PID", pid)
-			return pid
-		end,
-	},
+  {
+    type = "netcoredbg",
+    name = "launch - netcoredbg",
+    request = "launch",
+    program = function()
+      vim.api.nvim_command("write")
+      local dir = FIRST_UPSTREAM_FOLDER_CONTAINING_FILE("*.csproj")
+      local endingDir = TRIM_TO_CURRENT_DIRECTORY_FROM_FULL_PATH(dir)
+      -- vim.cmd(string.format("!dotnet build %s", dir))
+      return vim.fn.input("Path to dll: ", dir .. "/bin/Debug/net6.0/" .. endingDir .. ".dll", "file") -- can subsitute ** for net6.0
+    end,
+  },
+  {
+    type = "netcoredbg",
+    name = "attach - netcoredbg",
+    request = "attach",
+    processId = function()
+      local pgrep = vim.fn.system("pgrep -f 'dotnet run'")
+      print(pgrep)
+      local pid = tonumber(pgrep)
+      P(pid)
+      vim.fn.setenv("NETCOREDBG_ATTACH_PID", pid)
+      return pid
+    end,
+  },
 }
+
+--[[ vim.g.dotnet_build_project = function() ]]
+--[[     local default_path = vim.fn.getcwd() .. '/' ]]
+--[[     if vim.g['dotnet_last_proj_path'] ~= nil then ]]
+--[[         default_path = vim.g['dotnet_last_proj_path'] ]]
+--[[     end ]]
+--[[     local path = vim.fn.input('Path to your *proj file', default_path, 'file') ]]
+--[[     vim.g['dotnet_last_proj_path'] = path ]]
+--[[     local cmd = 'dotnet build -c Debug ' .. path .. ' > /dev/null' ]]
+--[[     print('') ]]
+--[[     print('Cmd to execute: ' .. cmd) ]]
+--[[     local f = os.execute(cmd) ]]
+--[[     if f == 0 then ]]
+--[[         print('\nBuild: ✔️ ') ]]
+--[[     else ]]
+--[[         print('\nBuild: ❌ (code: ' .. f .. ')') ]]
+--[[     end ]]
+--[[ end ]]
+--[[]]
+--[[ vim.g.dotnet_get_dll_path = function() ]]
+--[[     local request = function() ]]
+--[[         return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file') ]]
+--[[     end ]]
+--[[]]
+--[[     if vim.g['dotnet_last_dll_path'] == nil then ]]
+--[[         vim.g['dotnet_last_dll_path'] = request() ]]
+--[[     else ]]
+--[[         if vim.fn.confirm('Do you want to change the path to dll?\n' .. vim.g['dotnet_last_dll_path'], '&yes\n&no', 2) == 1 then ]]
+--[[             vim.g['dotnet_last_dll_path'] = request() ]]
+--[[         end ]]
+--[[     end ]]
+--[[]]
+--[[     return vim.g['dotnet_last_dll_path'] ]]
+--[[ end ]]
+--[[]]
+--[[ local config = { ]]
+--[[   { ]]
+--[[     type = "coreclr", ]]
+--[[     name = "launch - netcoredbg", ]]
+--[[     request = "launch", ]]
+--[[     program = function() ]]
+--[[         if vim.fn.confirm('Should I recompile first?', '&yes\n&no', 2) == 1 then ]]
+--[[             vim.g.dotnet_build_project() ]]
+--[[         end ]]
+--[[         return vim.g.dotnet_get_dll_path() ]]
+--[[     end, ]]
+--[[   }, ]]
+--[[ } ]]
+--[[]]
+--[[ dap.configurations.cs = config ]]
+--[[ dap.configurations.fsharp = config ]]
