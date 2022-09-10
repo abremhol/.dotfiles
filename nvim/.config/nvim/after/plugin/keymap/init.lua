@@ -41,20 +41,23 @@ vnoremap("<A-j>", ":m .+1<CR>==")
 vnoremap("<A-k>", ":m .-2<CR>==")
 
 -- replace what you you pasting
---[[ vnoremap("p", '"_dP') ]]
+vnoremap("p", '"_dP')
+
+-- TODO: Thinking about using the below,
+-- losing access to all leader d for debug which sucks
+--
 -- replace a word with yanked text
-xnoremap("<leader>p", '"_dP')
-
-nnoremap("<leader>y", '"+y')
-vnoremap("<leader>y", '"+y')
-nmap("<leader>Y", '"+Y')
-
---TODO[[ debugger conflict leader d ]]
-nnoremap("<leader>d", '"_d')
-vnoremap("<leader>d", '"_d')
-
-vnoremap("<leader>d", '"_d')
-
+--[[ xnoremap("<leader>p", '"_dP') ]]
+--[[]]
+--[[ nnoremap("<leader>y", '"+y') ]]
+--[[ vnoremap("<leader>y", '"+y') ]]
+--[[ nmap("<leader>Y", '"+Y') ]]
+--[[]]
+--[[ nnoremap("<leader>d", '"_d') ]]
+--[[ vnoremap("<leader>d", '"_d') ]]
+--[[]]
+--[[ vnoremap("<leader>d", '"_d') ]]
+--[[]]
 -- Visual Block --
 -- Move text up and down
 xnoremap("J", ":move '>+1<CR>gv-gv")
