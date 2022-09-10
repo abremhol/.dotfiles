@@ -8,10 +8,6 @@ dap.adapters.netcoredbg = {
 	args = { "--interpreter=vscode" },
 }
 
-local globalpid = 0
-
-dap.set_log_level("TRACE")
-
 dap.configurations.cs = {
 	{
 		type = "netcoredbg",
@@ -24,46 +20,27 @@ dap.configurations.cs = {
 			return vim.g.dotnet_get_dll_path()
 		end,
 	},
+{
+  type = "netcoredbg",
+  name = "launch norebuild - netcoredbg",
+  request = "launch",
+  program = function()
+    vim.api.nvim_command("write")
+    local dir = FIRST_UPSTREAM_FOLDER_CONTAINING_FILE("*.csproj")
+    local endingDir = TRIM_TO_CURRENT_DIRECTORY_FROM_FULL_PATH(dir)
+    -- vim.cmd(string.format("!dotnet build %s", dir))
+    return vim.fn.input("Path to dll: ", dir .. "/bin/Debug/net6.0/" .. endingDir .. ".dll", "file") -- can subsitute ** for net6.0
+  end,
+},
 	{
 		type = "netcoredbg",
 		name = "attach - netcoredbg",
 		request = "attach",
-		processId = require("dap.utils").pick_process
+		processId = function()
+			return vim.fn.getenv("NETCOREDBG_ATTACH_PID")
+		end,
 	},
-	--[[ { ]]
-	--[[ 	type = "netcoredbg", ]]
-	--[[ 	name = "attach - netcoredbg", ]]
-	--[[ 	request = "attach", ]]
-	--[[ 	processId = require("dap.utils").pick_process, ]]
-	--[[ }, ]]
-	--[[ { ]]
-	--[[   type = "netcoredbg", ]]
-	--[[   name = "attach - netcoredbg", ]]
-	--[[   request = "attach", ]]
-	--[[   pid = function() ]]
-	--[[     local pgrep = vim.fn.system("pgrep -f 'dotnet run'") ]]
-	--[[     print(pgrep) ]]
-	--[[     local pid = tonumber(pgrep) ]]
-	--[[     P(pid) ]]
-	--[[     vim.fn.setenv("NETCOREDBG_ATTACH_PID", pid) ]]
-	--[[     return pid ]]
-	--[[   end, ]]
-	--[[ }, ]]
 }
-
---[[ { ]]
---[[   type = "netcoredbg", ]]
---[[   name = "launch - netcoredbg", ]]
---[[   request = "launch", ]]
---[[   program = function() ]]
---[[     vim.api.nvim_command("write") ]]
---[[     local dir = FIRST_UPSTREAM_FOLDER_CONTAINING_FILE("*.csproj") ]]
---[[     local endingDir = TRIM_TO_CURRENT_DIRECTORY_FROM_FULL_PATH(dir) ]]
---[[     -- vim.cmd(string.format("!dotnet build %s", dir)) ]]
---[[     return vim.fn.input("Path to dll: ", dir .. "/bin/Debug/net6.0/" .. endingDir .. ".dll", "file") -- can subsitute ** for net6.0 ]]
---[[   end, ]]
---[[ }, ]]
---
 vim.g.set_process_id = function()
 	local pid = require("dap.utils").pick_process()
 	vim.fn.setenv("NETCOREDBG_ATTACH_PID", pid)
@@ -71,8 +48,8 @@ vim.g.set_process_id = function()
 end
 
 vim.g.dotnet_build_project = function()
-	local default_path = vim.fn.getcwd() .. "/"
-	if vim.g["dotnet_last_proj_path"] ~= nil then
+	local default_path = FIRST_UPSTREAM_FOLDER_CONTAINING_FILE("*.sln")
+  if vim.g["dotnet_last_proj_path"] ~= nil then
 		default_path = vim.g["dotnet_last_proj_path"]
 	end
 	local path = vim.fn.input("Path to your *proj file", default_path, "file")
@@ -90,7 +67,7 @@ end
 
 vim.g.dotnet_get_dll_path = function()
 	local request = function()
-		return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+		return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/net6.0/", "file")
 	end
 
 	if vim.g["dotnet_last_dll_path"] == nil then
