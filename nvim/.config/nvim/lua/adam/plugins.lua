@@ -103,10 +103,11 @@ return packer.startup(function(use)
 
 
   -- ColorThemes
-  use "ayu-theme/ayu-vim"
-  use "folke/tokyonight.nvim"
-  use "lunarvim/darkplus.nvim"
-  use 'marko-cerovac/material.nvim'
+  use { "catppuccin/nvim", as = "catppuccin" }
+  -- use "ayu-theme/ayu-vim"
+  -- use "folke/tokyonight.nvim"
+  -- use "lunarvim/darkplus.nvim"
+  -- use 'marko-cerovac/material.nvim'
 
   -- Other
   use("mbbill/undotree")
