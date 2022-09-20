@@ -80,8 +80,7 @@ nnoremap("<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>") -- Document Sy
 nnoremap("<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>") -- Workspace Symbols
 
 nnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
---[[ nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<cr>") ]]
-nnoremap("gd", "<cmd>lua require('omnisharp_extended').telescope_lsp_definitions()<cr>")
+nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
 nnoremap("gh", "<cmd>lua vim.lsp.buf.hover()<CR>")
 nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 nnoremap("<leader>sh", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
