@@ -31,6 +31,9 @@ nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
 nnoremap("Y", "y$")
 
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
+
 -- Visual --
 -- Stay in indent mode
 vnoremap("<", "<gv")
@@ -90,6 +93,7 @@ nnoremap("gp", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>')
 nnoremap("gn", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>')
 nnoremap("gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
 nnoremap("<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+nnoremap("<leader>td",":ToggleDiagnostics<cr>")
 
 -- Telescope
 nnoremap("<C-p>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown())<cr>")
@@ -130,7 +134,7 @@ nnoremap("<leader>ds", ":lua vim.g.set_process_id()<CR>")
 nnoremap("<leader>å", "<cmd>:Neogit<CR>")
 
 -- Other
-nnoremap("gf", ":Format<cr>")
+nnoremap("<leader>gf", ":Format<cr>")
 -- reload adam module
 nnoremap("<leader><CR>", "<cmd>lua require('adam.telescope').reload_modules()<CR>")
 -- Easy close terminal

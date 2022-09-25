@@ -6,27 +6,27 @@ end
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
-	local opts = {
-		on_attach = require("adam.lsp.handlers").on_attach,
-		capabilities = require("adam.lsp.handlers").capabilities,
-	}
+    local config = require("adam.lsp.handlers").config
+    --[[ P(config) ]]
+    local settings = config()
+
 
 	 if server.name == "jsonls" then
 	 	local jsonls_opts = require("adam.lsp.settings.jsonls")
-	 	opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+	 	settings = config(jsonls_opts)
 	 end
 
 	 if server.name == "sumneko_lua" then
 	 	local sumneko_opts = require("adam.lsp.settings.sumneko_lua")
-	 	opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+	 	settings = config(sumneko_opts)
 	 end
 
 	 if server.name == "omnisharp" then
 	 	local omnisharp_opts = require("adam.lsp.settings.omnisharp")
-	 	opts = vim.tbl_deep_extend("force", omnisharp_opts, opts)
+	 	settings = config(omnisharp_opts)
 	 end
 
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-	server:setup(opts)
+	server:setup(config(settings))
 end)

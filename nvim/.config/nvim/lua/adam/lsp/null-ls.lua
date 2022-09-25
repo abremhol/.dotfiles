@@ -11,8 +11,6 @@ null_ls.setup {
   debug = false,
   sources = {
     formatting.prettier.with { extra_args = {"--single-quote", "--jsx-single-quote" } },
-    formatting.stylua,
-    null_ls.builtins.code_actions.eslint,
-    null_ls.builtins.code_actions.refactoring
+    formatting.stylua
   },
 }

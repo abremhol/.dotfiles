@@ -44,7 +44,6 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
-  use "moll/vim-bbye" -- to be able to close buffers with bdelete without closing neovim
   use "gpanders/editorconfig.nvim" -- "read .editorconfig"
   -- "treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -64,12 +63,11 @@ return packer.startup(function(use)
   -- lsp
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
-  use 'Hoffs/omnisharp-extended-lsp.nvim' -- fixes go to def in libraries
+  use 'Hoffs/omnisharp-extended-lsp.nvim' -- fixes go to def in libraries in dotnet
   use 'onsails/lspkind.nvim'
   use 'nvim-lua/lsp_extensions.nvim'
-  use 'simrat39/symbols-outline.nvim'
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "ray-x/lsp_signature.nvim"
+  use("simrat39/symbols-outline.nvim")
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
@@ -100,7 +98,6 @@ return packer.startup(function(use)
       'theHamsta/nvim-dap-virtual-text',
     }
   }
-
 
   -- ColorThemes
   use { "catppuccin/nvim", as = "catppuccin" }
