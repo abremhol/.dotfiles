@@ -42,7 +42,10 @@ end
 M.config = function(_config)
 	return vim.tbl_deep_extend("force", {
 		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-		on_attach = function()
+		on_attach = function(client, bufnr)
+            if client.name == "tsserver" then
+                client.server_capabilities.document_formatting = false
+            end
 			nnoremap("gd", function() vim.lsp.buf.definition() end)
 			nnoremap("K", function() vim.lsp.buf.hover() end)
 			nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
