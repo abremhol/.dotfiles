@@ -10,6 +10,7 @@ addToPath $HOME/.local/bin
 addToPath $GOPATH/bin
 addToPath $HOME/.yarn/bin
 addToPath /mnt/c/Users/abremhol/AppData/Local/Programs/Microsoft\ VS\ Code/bin
+addToPath $HOME/.dotnet
 
 # ccache
 addToPathFront /usr/lib/ccache

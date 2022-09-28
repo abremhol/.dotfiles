@@ -67,7 +67,8 @@ return packer.startup(function(use)
   use 'onsails/lspkind.nvim'
   use 'nvim-lua/lsp_extensions.nvim'
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use("simrat39/symbols-outline.nvim")
+  use "glepnir/lspsaga.nvim"
+  use "RRethy/vim-illuminate"
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
