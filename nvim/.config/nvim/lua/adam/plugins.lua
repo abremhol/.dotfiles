@@ -69,6 +69,7 @@ return packer.startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "glepnir/lspsaga.nvim"
   use "RRethy/vim-illuminate"
+  use "carlsmedstad/vim-bicep"
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
