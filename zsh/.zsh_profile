@@ -19,7 +19,7 @@ export PATH=$PATH:$GOPATH/bin
 export N_PREFIX="$HOME/.local/n"
 export DOTFILES=$HOME/.dotfiles
 export GIT_EDITOR=$VIM
-export DOTNET_ROOT=$HOME/dotnet
+export DOTNET_ROOT=$HOME/.dotnet
 export CHROME_BIN=/usr/bin/google-chrome
 
 #path
