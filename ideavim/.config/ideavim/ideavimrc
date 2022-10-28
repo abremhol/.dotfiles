@@ -1,0 +1,56 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set commentary
+
+""" Plugin settings -------------------------
+
+""" Common settings -------------------------
+set showmode
+set so=8
+set incsearch
+set nu
+set visualbell
+set clipboard+=unnamed
+set hlsearch
+set ignorecase smartcase
+
+""" Idea specific settings ------------------
+"J to join line up"
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+""" Mappings -------------------------------- 
+map <leader>z :source ~/.ideavimrc<CR>
+map <leader>c <Action>(CommentByLineComment)
+
+""" LSP --------------------------------------
+map gh <Action>(ShowErrorDescription)
+map gi <Action>(GotoImplementation)
+map gd <Action>(GotoDeclaration)
+map <leader>la <Action>(Refactorings.QuickListPopupAction)
+map <leader>lr <Action>(RenameElement)
+map <leader>gr <Action>(FindUsages)
+
+""" Code actions
+""map <leader>la <Action>(Generate)
+
+
+""" Telescope --------------------------------
+map <leader>ff <Action>(GotoFile)
+map <leader>fg <Action>(FindInPath)
+map <leader>fz <Action>(Find)
+
+""" Movement ---------------------------------
+nnoremap N Nzz
+nnoremap n nzz
+vnoremap N Nzz
+vnoremap n nzz
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+
+""nnoremap <C-j> <Action>(EditorDown)
+""nnoremap <C-k> <Action>(EditorUp)
