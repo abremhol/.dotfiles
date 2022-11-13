@@ -15,3 +15,4 @@ require "adam.nvim-tree"
 require "adam.lualine"
 require "adam.debugger"
 require "adam.usercommands"
+--[[ require("neoscroll").setup() ]]
