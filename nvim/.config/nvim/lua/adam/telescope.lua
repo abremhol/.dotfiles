@@ -14,13 +14,13 @@ require("telescope").setup({
 	pickers = {
 		find_files = {
 			hidden = true,
-			file_ignore_patterns = { ".git", "node_modules", "bin", "obj"},
-      no_ignore = true
+			file_ignore_patterns = { ".git", "node_modules", "bin", "obj" },
+			no_ignore = true,
 		},
 		live_grep = {
 			hidden = true,
 			file_ignore_patterns = { ".git", "node_modules", "bin", "obj" },
-      no_ignore = true
+			no_ignore = true,
 		},
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
@@ -41,11 +41,45 @@ require("telescope").setup({
 
 local M = {}
 function M.reload_modules()
-	local lua_dirs = vim.fn.glob("./lua/*", 0, 1)
-	for _, dir in ipairs(lua_dirs) do
-		dir = string.gsub(dir, "./lua/", "")
-		require("plenary.reload").reload_module(dir)
+	-- Telescope will give us something like ju/colors.lua,
+	-- so this function convert the selected entry to
+	-- the module name: adam.colors
+	local function get_module_name(s)
+		local module_name
+
+		module_name = s:gsub("%.lua", "")
+		module_name = module_name:gsub("%/", ".")
+		module_name = module_name:gsub("%.init", "")
+
+		return module_name
 	end
+
+	local prompt_title = "~ neovim modules ~"
+
+	-- sets the path to the lua folder
+	local path = "~/.config/nvim"
+
+	local opts = {
+		prompt_title = prompt_title,
+		cwd = path,
+
+		attach_mappings = function(_, map)
+			-- Adds a new map to ctrl+e.
+			map("i", "<c-e>", function(_)
+				-- these two a very self-explanatory
+				local entry = require("telescope.actions.state").get_selected_entry()
+				local name = get_module_name(entry.value)
+
+				-- call the helper method to reload the module
+				-- and give some feedback
+				R(name)
+				P(name .. " RELOADED!!!")
+			end)
+
+			return true
+		end,
+	}
+	require("telescope.builtin").find_files(opts)
 end
 
 M.search_dotfiles = function()

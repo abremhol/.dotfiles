@@ -136,10 +136,8 @@ nnoremap("<leader>å", "<cmd>:Neogit<CR>")
 -- Other
 nnoremap("<leader>gf", ":Format<cr>")
 -- reload adam module
-nnoremap("<leader><CR>", "<cmd>lua require('adam.telescope').reload_modules()<CR>")
+nnoremap("<leader>zl", "<cmd>lua require'adam.telescope'.reload_modules()<CR>")
 -- Easy close terminal
 tnoremap("<Esc>", "<C-\\><C-n>")
 
---build dotnet
-nnoremap("<C-b>", ":lua vim.g.dotnet_build_project()<CR>")
-
+nnoremap("<leader>u", ":UndotreeShow<CR>")
