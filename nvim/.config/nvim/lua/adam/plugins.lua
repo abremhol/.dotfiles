@@ -112,6 +112,7 @@ return packer.startup(function(use)
   use("mbbill/undotree")
   --[[ use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight ]]
   use 'szw/vim-maximizer' -- maximize current window
+  use 'ThePrimeagen/harpoon'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
