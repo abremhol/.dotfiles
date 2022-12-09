@@ -46,22 +46,6 @@ vnoremap("<A-k>", ":m .-2<CR>==")
 -- replace what you you pasting
 vnoremap("p", '"_dP')
 
--- TODO: Thinking about using the below,
--- losing access to all leader d for debug which sucks
---
--- replace a word with yanked text
---[[ xnoremap("<leader>p", '"_dP') ]]
---[[]]
---[[ nnoremap("<leader>y", '"+y') ]]
---[[ vnoremap("<leader>y", '"+y') ]]
---[[ nmap("<leader>Y", '"+Y') ]]
---[[]]
---[[ nnoremap("<leader>d", '"_d') ]]
---[[ vnoremap("<leader>d", '"_d') ]]
---[[]]
---[[ vnoremap("<leader>d", '"_d') ]]
---[[]]
--- Visual Block --
 -- Move text up and down
 xnoremap("J", ":move '>+1<CR>gv-gv")
 xnoremap("K", ":move '<-2<CR>gv-gv")
@@ -139,5 +123,5 @@ nnoremap("<leader>gf", ":Format<cr>")
 nnoremap("<leader>zl", "<cmd>lua require'adam.telescope'.reload_modules()<CR>")
 -- Easy close terminal
 tnoremap("<Esc>", "<C-\\><C-n>")
-
-nnoremap("<leader>u", ":UndotreeShow<CR>")
+nnoremap("<leader>u", "<cmd>:UndotreeShow<CR>")
+nnoremap("<leader>zz", "<cmd>ZenMode<CR>")
