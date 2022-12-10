@@ -5,11 +5,11 @@
       "[Test]",
       "public void ${1:TestName}()",
       "{",
-      "//Given",
-      "",
-      "//When",
-      "",
-      "//Then",
+          "//Arrange",
+          "",
+          "//Act",
+          "",
+          "//Assert",
       "}$0"
     ],
     "description": "create nunit test"
@@ -23,7 +23,7 @@
       "",
       "//Assert"
     ],
-    "description": "create nunit test"
+    "description": "arrange act assert"
   }
 
 }

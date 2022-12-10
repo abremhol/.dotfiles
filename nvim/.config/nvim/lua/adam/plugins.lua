@@ -42,9 +42,9 @@ packer.init({
 return packer.startup(function(use)
     -- My plugins here
     use("wbthomason/packer.nvim") -- Have packer manage itself
-    use("kyazdani42/nvim-web-devicons")
     use("kyazdani42/nvim-tree.lua")
     use("gpanders/editorconfig.nvim") -- "read .editorconfig"
+
     -- "treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("p00f/nvim-ts-rainbow")
@@ -86,7 +86,6 @@ return packer.startup(function(use)
 
     -- Statusline
     use("nvim-lualine/lualine.nvim")
-    use("vimpostor/vim-tpipeline") -- for merging statusline with tmux status line
 
     -- Text Handling
     use("tpope/vim-surround")
@@ -102,12 +101,6 @@ return packer.startup(function(use)
         },
     })
 
-    -- ColorThemes
-    --[[ use({ "catppuccin/nvim", as = "catppuccin" }) ]]
-    -- use "ayu-theme/ayu-vim"
-    -- use "folke/tokyonight.nvim"
-    -- use "lunarvim/darkplus.nvim"
-    -- use 'marko-cerovac/material.nvim'
     use({
         "rose-pine/neovim",
         as = "rose-pine",
@@ -118,7 +111,6 @@ return packer.startup(function(use)
 
     -- Other
     use("mbbill/undotree")
-    --[[ use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight ]]
     use("szw/vim-maximizer") -- maximize current window
     use("ThePrimeagen/harpoon")
     use({
