@@ -68,10 +68,9 @@ nnoremap("<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>") -- Wo
 
 nnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
 nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
-nnoremap("gh", "<cmd>lua vim.lsp.buf.hover()<CR>")
+nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>")
 nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 nnoremap("<leader>sh", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-nnoremap("<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>")
 nnoremap("gr", "<cmd>Telescope lsp_references<CR>")
 nnoremap("gp", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>')
 nnoremap("gn", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>')
