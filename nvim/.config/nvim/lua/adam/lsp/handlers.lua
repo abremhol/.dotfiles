@@ -1,8 +1,5 @@
 local M = {}
 
-local Remap = require("adam.remap")
-local nnoremap = Remap.nnoremap
-local inoremap = Remap.inoremap
 
 M.setup = function()
   local signs = {
@@ -46,13 +43,13 @@ M.config = function(_config)
             if client.name == "tsserver" then
                 client.server_capabilities.document_formatting = false
             end
-			nnoremap("gd", function() vim.lsp.buf.definition() end)
-			nnoremap("K", function() vim.lsp.buf.hover() end)
-			nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
-			nnoremap("<leader>lj", function() vim.diagnostic.goto_next() end)
-			nnoremap("<leader>lk", function() vim.diagnostic.goto_prev() end)
-			nnoremap("<leader>la", function() vim.lsp.buf.code_action() end)
-			nnoremap("<leader>lco", function() vim.lsp.buf.code_action({
+			vim.keymap.set("n","gd", function() vim.lsp.buf.definition() end)
+			vim.keymap.set("n","K", function() vim.lsp.buf.hover() end)
+			vim.keymap.set("n","<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
+			vim.keymap.set("n","<leader>lj", function() vim.diagnostic.goto_next() end)
+			vim.keymap.set("n","<leader>lk", function() vim.diagnostic.goto_prev() end)
+			vim.keymap.set("n","<leader>la", function() vim.lsp.buf.code_action() end)
+			vim.keymap.set("n","<leader>lco", function() vim.lsp.buf.code_action({
                 filter = function(code_action)
                     if not code_action or not code_action.data then
                         return false
@@ -63,9 +60,9 @@ M.config = function(_config)
                 end,
                 apply = true
             }) end)
-			nnoremap("<leader>gr", function() vim.lsp.buf.references() end)
-			nnoremap("<leader>lr", function() vim.lsp.buf.rename() end)
-			inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
+			vim.keymap.set("n","<leader>gr", function() vim.lsp.buf.references() end)
+			vim.keymap.set("n","<leader>lr", function() vim.lsp.buf.rename() end)
+			vim.keymap.set("i","<C-h>", function() vim.lsp.buf.signature_help() end)
             vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({async = true})' ]]
 		end,
 	}, _config or {})

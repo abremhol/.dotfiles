@@ -2,9 +2,6 @@ local dap = require("dap")
 local dapui = require("dapui")
 local daptext = require("nvim-dap-virtual-text")
 
-local remap = require("adam.remap")
-local nnoremap = remap.nnoremap
-
 daptext.setup()
 dapui.setup({
     layouts = {
@@ -41,34 +38,34 @@ require("adam.debugger.node");
 require("adam.debugger.dotnet");
 
 --Extra keymaps for arrow keys
-nnoremap("<leader>ö", function()
+vim.keymap.set("n","<leader>ö", function()
     dapui.toggle(1)
 end)
-nnoremap("<leader>Ö", function()
+vim.keymap.set("n","<leader>Ö", function()
     dapui.toggle(2)
 end)
 
-nnoremap("<leader><leader>", function()
+vim.keymap.set("n","<leader><leader>", function()
     dap.close()
 end)
 
-nnoremap("<Up>", function()
+vim.keymap.set("n","<Up>", function()
     dap.continue()
 end)
-nnoremap("<Down>", function()
+vim.keymap.set("n","<Down>", function()
     dap.step_over()
 end)
-nnoremap("<Right>", function()
+vim.keymap.set("n","<Right>", function()
     dap.step_into()
 end)
-nnoremap("<Left>", function()
+vim.keymap.set("n","<Left>", function()
     dap.step_out()
 end)
 
-nnoremap("<Leader>b", function()
+vim.keymap.set("n","<Leader>b", function()
     dap.toggle_breakpoint()
 end)
-nnoremap("<Leader>B", function()
+vim.keymap.set("n","<Leader>B", function()
     dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
 end)
 
