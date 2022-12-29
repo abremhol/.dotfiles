@@ -1,49 +1,53 @@
 vim.keymap.set("n","<C-p>", ":Telescope")
-vim.keymap.set("n","<leader>ps", function()
+vim.keymap.set("n","<leader>fs", function()
     require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})
 end)
 vim.keymap.set("n","<C-p>", function()
     require('telescope.builtin').git_files()
 end)
-vim.keymap.set("n","<Leader>pf", function()
+vim.keymap.set("n","<Leader>ff", function()
     require('telescope.builtin').find_files()
 end)
 
-vim.keymap.set("n","<leader>pw", function()
+vim.keymap.set("n","<leader>fw", function()
     require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }
 end)
-vim.keymap.set("n","<leader>pb", function()
+vim.keymap.set("n","<leader>fg", function()
+    require('telescope.builtin').live_grep()
+end)
+vim.keymap.set("n","<leader>fb", function()
     require('telescope.builtin').buffers()
 end)
-vim.keymap.set("n","<leader>vh", function()
+vim.keymap.set("n","<leader>fh", function()
     require('telescope.builtin').help_tags()
 end)
 
--- TODO: Fix this immediately
-vim.keymap.set("n","<leader>vwh", function()
-    require('telescope.builtin').help_tags()
+vim.keymap.set("n","<leader>fz", function()
+    require('telescope.builtin').current_buffer_fuzzy_find()
 end)
 
-vim.keymap.set("n","<leader>vrc", function()
-    require('adam.telescope').search_dotfiles({ hidden = true })
+vim.keymap.set("n","<leader>fM", function()
+    require('telescope.builtin').man_pages()
 end)
-vim.keymap.set("n","<leader>va", function()
-    require('adam.telescope').anime_selector()
+
+vim.keymap.set("n","<leader>fo", function()
+    require('telescope.builtin').oldfiles()
 end)
-vim.keymap.set("n","<leader>vc", function()
-    require('adam.telescope').chat_selector()
+
+vim.keymap.set("n","<leader>fk", function()
+    require('telescope.builtin').keymaps()
 end)
-vim.keymap.set("n","<leader>gc", function()
+
+vim.keymap.set("n","<leader>fB", function()
     require('adam.telescope').git_branches()
 end)
-vim.keymap.set("n","<leader>gw", function()
-    require('telescope').extensions.git_worktree.git_worktrees()
-end)
-vim.keymap.set("n","<leader>gm", function()
-    require('telescope').extensions.git_worktree.create_git_worktree()
-end)
-vim.keymap.set("n","<leader>td", function()
-    require('adam.telescope').dev()
+
+vim.keymap.set("n","<leader>fd", function()
+	require("telescope.builtin").find_files({
+		prompt_title = "< VimRC >",
+		cwd = vim.env.DOTFILES,
+		hidden = true,
+	})
 end)
 
 local actions = require("telescope.actions")
@@ -86,17 +90,3 @@ require("telescope").setup({
 		-- please take a look at the readme of the extension you want to configure
 	},
 })
-
-local M = {}
-
-M.search_dotfiles = function()
-	require("telescope.builtin").find_files({
-		prompt_title = "< VimRC >",
-		cwd = vim.env.DOTFILES,
-		hidden = true,
-	})
-end
-return M
-
-
-
