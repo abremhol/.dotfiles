@@ -15,28 +15,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd([[packadd packer.nvim]])
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
     return
 end
-
--- Have packer use a popup window
-packer.init({
-    display = {
-        open_fn = function()
-            return require("packer.util").float({ border = "rounded" })
-        end,
-    },
-})
 
 -- Install your plugins here
 return packer.startup(function(use)
@@ -48,32 +31,55 @@ return packer.startup(function(use)
     -- "treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("p00f/nvim-ts-rainbow")
-    use("JoosepAlviste/nvim-ts-context-commentstring")
 
     -- cmp plugins
-    use("hrsh7th/nvim-cmp") -- The completion plugin
-    use("hrsh7th/cmp-buffer") -- buffer completions
-    use("hrsh7th/cmp-path") -- path completions
-    use("hrsh7th/cmp-cmdline") -- cmdline completions
-    use("saadparwaiz1/cmp_luasnip") -- snippet completions
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-nvim-lua")
-    use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+    --[[ use("hrsh7th/nvim-cmp") -- The completion plugin ]]
+    --[[ use("hrsh7th/cmp-buffer") -- buffer completions ]]
+    --[[ use("hrsh7th/cmp-path") -- path completions ]]
+    --[[ use("hrsh7th/cmp-cmdline") -- cmdline completions ]]
+    --[[ use("saadparwaiz1/cmp_luasnip") -- snippet completions ]]
+    --[[ use("hrsh7th/cmp-nvim-lsp") ]]
+    --[[ use("hrsh7th/cmp-nvim-lua") ]]
+    --[[ use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" }) ]]
 
     -- lsp
-    use("neovim/nvim-lspconfig")
-    use("williamboman/nvim-lsp-installer")
+    --[[ use("neovim/nvim-lspconfig") ]]
+    --[[ use("williamboman/nvim-lsp-installer") ]]
     use("Hoffs/omnisharp-extended-lsp.nvim") -- fixes go to def in libraries in dotnet
-    use("onsails/lspkind.nvim")
-    use("nvim-lua/lsp_extensions.nvim")
+    --[[ use("onsails/lspkind.nvim") ]]
+    --[[ use("nvim-lua/lsp_extensions.nvim") ]]
     use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+    use("JoosepAlviste/nvim-ts-context-commentstring")
     use("glepnir/lspsaga.nvim")
     use("RRethy/vim-illuminate")
     use("carlsmedstad/vim-bicep")
+    use "b0o/schemastore.nvim"
+
+    use({
+        "VonHeikemen/lsp-zero.nvim",
+        requires = {
+            -- LSP Support
+            { "neovim/nvim-lspconfig" },
+            { "williamboman/mason.nvim" },
+            { "williamboman/mason-lspconfig.nvim" },
+
+            -- Autocompletion
+            { "hrsh7th/nvim-cmp" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-nvim-lua" },
+
+            -- Snippets
+            { "L3MON4D3/LuaSnip" },
+            { "rafamadriz/friendly-snippets" },
+        },
+    })
 
     -- Snippets
-    use("L3MON4D3/LuaSnip")
-    use("rafamadriz/friendly-snippets")
+    --[[ use("L3MON4D3/LuaSnip") ]]
+    --[[ use("rafamadriz/friendly-snippets") ]]
 
     -- Telescope
     use("nvim-lua/popup.nvim")
@@ -88,8 +94,6 @@ return packer.startup(function(use)
     use("nvim-lualine/lualine.nvim")
 
     -- Text Handling
-    use("tpope/vim-surround")
-    use("windwp/nvim-autopairs")
     use("numToStr/Comment.nvim") -- Easily comment stuff
 
     -- Debugging

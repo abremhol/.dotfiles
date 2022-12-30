@@ -11,17 +11,6 @@ api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter" }, {
 	group = toggleRelativeGroup,
 })
 
--- Use 'q' to quit from common plugins
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
-	callback = function()
-		vim.cmd([[
-      vim.keymap.set n <silent> <buffer> q :close<CR> 
-      set nobuflisted 
-    ]])
-	end,
-})
-
 -- Highlight Yanked Text
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	callback = function()

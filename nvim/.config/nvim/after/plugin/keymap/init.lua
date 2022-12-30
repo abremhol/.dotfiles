@@ -80,26 +80,6 @@ vim.keymap.set("n","gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
 vim.keymap.set("n","<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
 vim.keymap.set("n","<leader>td",":ToggleDiagnostics<cr>")
 
--- Telescope
-vim.keymap.set("n","<C-p>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown())<cr>")
-vim.keymap.set("n","<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown())<cr>")
-vim.keymap.set("n","<leader>fg", "<cmd>lua require'telescope.builtin'.live_grep(require('telescope.themes').get_dropdown())<cr>")
-vim.keymap.set("n",
-	"<leader>fb",
-	"<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({ previewer = false }))<cr>"
-)
-vim.keymap.set("n","<leader>fh", "<cmd>lua require'telescope.builtin'.help_tags(require('telescope.themes').get_dropdown())<cr>")
-vim.keymap.set("n",
-	"<leader>fz",
-	"<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_ivy())<CR>"
-)
-vim.keymap.set("n","<leader>fB", "<cmd>Telescope git_branches<cr>") -- checkout branch
-vim.keymap.set("n","<leader>fM", "<cmd>Telescope man_pages<cr>")
-vim.keymap.set("n","<leader>fr", "<cmd>Telescope oldfiles<cr>") -- recent files
-vim.keymap.set("n","<leader>fR", "<cmd>Telescope registers<cr>")
-vim.keymap.set("n","<leader>fk", "<cmd>Telescope keymaps<cr>")
-vim.keymap.set("n","<leader>fC", "<cmd>Telescope commands<cr>")
-vim.keymap.set("n","<leader>fd", "<cmd>lua require('adam.telescope').search_dotfiles({ hidden = true })<cr>")
 
 -- DAP
 vim.keymap.set("n","<leader>dc", "<cmd>lua require'dap'.continue()<CR>")
