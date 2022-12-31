@@ -1,4 +1,3 @@
-vim.keymap.set("n","<leader>pv", ":Ex<CR>")
 vim.keymap.set("n","<leader>u", ":UndotreeShow<CR>")
 
 vim.keymap.set("v","J", ":m '>+1<CR>gv=gv")
@@ -96,7 +95,6 @@ vim.keymap.set("n","<leader>dx", "<cmd>lua require'dap'.terminate()<CR>")
 vim.keymap.set("n","<leader>ds", ":lua vim.g.set_process_id()<CR>")
 
 -- Git
-vim.keymap.set("n","<leader>å", "<cmd>:Neogit<CR>")
 
 -- Other
 vim.keymap.set("n","<leader>gf", ":Format<cr>")

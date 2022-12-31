@@ -1,14 +1,8 @@
 require "adam.globals"
-require "adam.plugins"
-require "adam.telescope"
---[[ require "adam.lsp" ]]
---[[ require "adam.cmp" ]]
---[[ require "adam.treesitter" ]]
+require "adam.packer"
 require "adam.options"
 require "adam.autocmds"
 require "adam.comment"
 require "adam.gitsigns"
-require "adam.nvim-tree"
-require "adam.lualine"
 require "adam.debugger"
 require "adam.usercommands"

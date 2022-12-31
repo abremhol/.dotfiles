@@ -3,17 +3,6 @@ P = function(v)
 	return v
 end
 
-vim.g.reload_config = function()
-	for name, _ in pairs(package.loaded) do
-		if name:match("^adam") and not name:match("nvim-tree") and not name:match("vim-tpipeline") then
-			package.loaded[name] = nil
-		end
-	end
-
-	dofile(vim.env.MYVIMRC)
-	vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
-end
-
 FIND_BUFFERS = function()
 	local results = {}
 	local buffers = vim.api.nvim_list_bufs()
@@ -56,7 +45,7 @@ FIRST_UPSTREAM_FOLDER_CONTAINING_FILE = function(s)
 end
 
 TRIM_TO_CURRENT_DIRECTORY_FROM_FULL_PATH = function(dir)
-	local endingDirIndex = ""
+	local endingDirIndex = dir.length
 	local i = 0
 	while true do
 		i = string.find(dir, "/", i + 1) -- find 'next' /
@@ -65,5 +54,6 @@ TRIM_TO_CURRENT_DIRECTORY_FROM_FULL_PATH = function(dir)
 		end
 		endingDirIndex = i
 	end
-	return string.sub(dir, endingDirIndex + 1, string.len(dir))
+    local res = string.sub(dir, endingDirIndex + 1, string.len(dir))
+	return res
 end

@@ -82,7 +82,6 @@ local snippets_paths = function()
 		end
 	end
 	table.insert(paths, my_snippets_path)
-    P(paths)
 	return paths
 end
 
