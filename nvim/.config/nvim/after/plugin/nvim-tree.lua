@@ -6,5 +6,5 @@ nvim_tree.setup({
     }
 })
 
-vim.keymap.set("n","<leader>e", ":NvimTreeFindFileToggle <cr>")
-vim.keymap.set("n","<leader>r", ":NvimTreeRefresh <cr>")
+vim.keymap.set("n","<leader>e", vim.cmd.NvimTreeFindFileToggle)
+vim.keymap.set("n","<leader>r", vim.cmd.NvimTreeRefresh)

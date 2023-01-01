@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local telescope_builtin = require("telescope.builtin")
 
 lsp.preset("recommended")
 
@@ -31,14 +32,14 @@ lsp.configure("tsserver", {
 	},
 })
 
-require('lspconfig').jsonls.setup {
-  settings = {
-    json = {
-      schemas = require('schemastore').json.schemas(),
-      validate = { enable = true },
-    },
-  },
-}
+require("lspconfig").jsonls.setup({
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+})
 
 local omnisharp_bin = vim.fn.stdpath("data") .. "/lsp_servers/omnisharp/omnisharp/OmniSharp"
 lsp.configure("omnisharp", {
@@ -113,7 +114,7 @@ lsp.on_attach(function(client, bufnr)
 		client.server_capabilities.document_formatting = false
 	end
 
-	--[[ gd, gr, gl etc are all set by default by lsp zero  ]]
+	--[[ K, gd, gi, gr, gl, gD etc are all set by default by lsp zero  ]]
 
 	vim.keymap.set("n", "<leader>vws", function()
 		vim.lsp.buf.workspace_symbol()
@@ -121,9 +122,16 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>lj", function()
 		vim.diagnostic.goto_next()
 	end)
+	vim.keymap.set("n", "gn", function()
+		vim.diagnostic.goto_next({ border = "rounded" })
+	end)
 	vim.keymap.set("n", "<leader>lk", function()
 		vim.diagnostic.goto_prev()
 	end)
+	vim.keymap.set("n", "gp", function()
+		vim.diagnostic.goto_prev({ border = "rounded" })
+	end)
+
 	vim.keymap.set("n", "<leader>la", function()
 		vim.lsp.buf.code_action()
 	end)
@@ -146,7 +154,35 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end)
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({async = true})' ]])
+
+	vim.keymap.set("n", "<leader>sh", function()
+		vim.lsp.buf.signature_help()
+	end)
+
+	vim.keymap.set("n", "<leader>gf", vim.cmd.LspZeroFormat)
+	vim.keymap.set("n", "<leader>lf", vim.cmd.LspZeroFormat)
+
+	vim.keymap.set("n", "<leader>ld", function()
+		telescope_builtin.diagnostics({ bufnr = opts.buffer }) -- Document Diagnostics
+	end)
+	vim.keymap.set("n", "<leader>lw", function()
+		telescope_builtin.diagnostics() -- Workspace Diagnostics
+	end)
+	vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo)
+	vim.keymap.set("n", "<leader>lq", function()
+		vim.lsp.diagnostic.set_loclist() -- Quickfix
+	end)
+	vim.keymap.set("n", "<leader>ls", function()
+		telescope_builtin.lsp_document_symbols() -- Document Symbols
+	end)
+	vim.keymap.set("n", "<leader>lS", function()
+		telescope_builtin.lsp_dynamic_workspace_symbols() -- Workspace Symbols
+	end)
+
+	vim.keymap.set("n", "<leader>q", function()
+		vim.diagnostic.setloclist()
+	end)
+	vim.keymap.set("n", "<leader>td", vim.cmd.ToggleDiagnostics)
 end)
 
 lsp.setup()
@@ -154,14 +190,14 @@ lsp.setup()
 -- Toogle diagnostics
 local diagnostics_active = true
 vim.api.nvim_create_user_command("ToggleDiagnostics", function()
-  diagnostics_active = not diagnostics_active
-  if diagnostics_active then
-    vim.api.nvim_echo({ { "Show diagnostics" } }, false, {})
-    vim.diagnostic.enable()
-  else
-    vim.api.nvim_echo({ { "Disable diagnostics" } }, false, {})
-    vim.diagnostic.disable()
-  end
+	diagnostics_active = not diagnostics_active
+	if diagnostics_active then
+		vim.api.nvim_echo({ { "Show diagnostics" } }, false, {})
+		vim.diagnostic.enable()
+	else
+		vim.api.nvim_echo({ { "Disable diagnostics" } }, false, {})
+		vim.diagnostic.disable()
+	end
 end, {})
 
 vim.diagnostic.config({

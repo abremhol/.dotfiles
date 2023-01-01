@@ -1,49 +1,51 @@
-vim.keymap.set("n","<C-p>", ":Telescope")
-vim.keymap.set("n","<leader>fs", function()
-    require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})
+local telescope_builtin = require("telescope.builtin")
+
+vim.keymap.set("n", "<C-p>", ":Telescope")
+vim.keymap.set("n", "<leader>gs", function()
+	telescope_builtin.grep_string({ search = vim.fn.input("Grep For > ") })
 end)
-vim.keymap.set("n","<C-p>", function()
-    require('telescope.builtin').git_files()
+vim.keymap.set("n", "<C-p>", function()
+	telescope_builtin.git_files()
 end)
-vim.keymap.set("n","<Leader>ff", function()
-    require('telescope.builtin').find_files()
+vim.keymap.set("n", "<Leader>ff", function()
+	telescope_builtin.find_files()
 end)
 
-vim.keymap.set("n","<leader>fw", function()
-    require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }
+vim.keymap.set("n", "<leader>fw", function()
+	telescope_builtin.grep_string({ search = vim.fn.expand("<cword>") })
 end)
-vim.keymap.set("n","<leader>fg", function()
-    require('telescope.builtin').live_grep()
+vim.keymap.set("n", "<leader>fg", function()
+	telescope_builtin.live_grep()
 end)
-vim.keymap.set("n","<leader>fb", function()
-    require('telescope.builtin').buffers()
+vim.keymap.set("n", "<leader>fb", function()
+	telescope_builtin.buffers()
 end)
-vim.keymap.set("n","<leader>fh", function()
-    require('telescope.builtin').help_tags()
-end)
-
-vim.keymap.set("n","<leader>fz", function()
-    require('telescope.builtin').current_buffer_fuzzy_find()
+vim.keymap.set("n", "<leader>fh", function()
+	telescope_builtin.help_tags()
 end)
 
-vim.keymap.set("n","<leader>fM", function()
-    require('telescope.builtin').man_pages()
+vim.keymap.set("n", "<leader>fz", function()
+	telescope_builtin.current_buffer_fuzzy_find()
 end)
 
-vim.keymap.set("n","<leader>fo", function()
-    require('telescope.builtin').oldfiles()
+vim.keymap.set("n", "<leader>fM", function()
+	telescope_builtin.man_pages()
 end)
 
-vim.keymap.set("n","<leader>fk", function()
-    require('telescope.builtin').keymaps()
+vim.keymap.set("n", "<leader>fo", function()
+	telescope_builtin.oldfiles()
 end)
 
-vim.keymap.set("n","<leader>fB", function()
-    require('adam.telescope').git_branches()
+vim.keymap.set("n", "<leader>fk", function()
+	telescope_builtin.keymaps()
 end)
 
-vim.keymap.set("n","<leader>fd", function()
-	require("telescope.builtin").find_files({
+vim.keymap.set("n", "<leader>fB", function()
+	telescope_builtin.git_branches()
+end)
+
+vim.keymap.set("n", "<leader>fd", function()
+	telescope_builtin.find_files({
 		prompt_title = "< VimRC >",
 		cwd = vim.env.DOTFILES,
 		hidden = true,
