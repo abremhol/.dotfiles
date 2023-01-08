@@ -110,8 +110,83 @@ lsp.on_attach(function(client, bufnr)
 		return
 	end
 
+    --[[ using null-ls with prettierd instead of tsserver build in ]]
 	if client.name == "tsserver" then
 		client.server_capabilities.document_formatting = false
+	end
+
+	--[[ temporary fix for error lsp/semantic_tokens.lua:344: Vim(redraw):E5248: until omnisharp fixes their tokentypes ]]
+	if client.name == "omnisharp" then
+		client.server_capabilities.semanticTokensProvider.legend = {
+			tokenModifiers = { "static" },
+			tokenTypes = {
+				"comment",
+				"excluded",
+				"identifier",
+				"keyword",
+				"keyword",
+				"number",
+				"operator",
+				"operator",
+				"preprocessor",
+				"string",
+				"whitespace",
+				"text",
+				"static",
+				"preprocessor",
+				"punctuation",
+				"string",
+				"string",
+				"class",
+				"delegate",
+				"enum",
+				"interface",
+				"module",
+				"struct",
+				"typeParameter",
+				"field",
+				"enumMember",
+				"constant",
+				"local",
+				"parameter",
+				"method",
+				"method",
+				"property",
+				"event",
+				"namespace",
+				"label",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"xml",
+				"regexp",
+				"regexp",
+				"regexp",
+				"regexp",
+				"regexp",
+				"regexp",
+				"regexp",
+				"regexp",
+				"regexp",
+			},
+		}
 	end
 
 	vim.keymap.set("n", "<leader>vws", function()

@@ -3,26 +3,7 @@ local dapui = require("dapui")
 local daptext = require("nvim-dap-virtual-text")
 
 daptext.setup()
-dapui.setup({
-	layouts = {
-		{
-			elements = {
-				"console",
-			},
-			size = 7,
-			position = "bottom",
-		},
-		{
-			elements = {
-				-- Elements can be strings or table with id and size keys.
-				{ id = "scopes", size = 0.25 },
-				"watches",
-			},
-			size = 40,
-			position = "left",
-		},
-	},
-})
+dapui.setup()
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open(1)
@@ -91,7 +72,7 @@ vim.keymap.set("n", "<leader>dl", function()
 	dap.run_last()
 end)
 
-vim.keymap.set("n", "<leader>dl", function()
+vim.keymap.set("n", "<leader>ds", function()
 	vim.g.set_process_id()
 end)
 
