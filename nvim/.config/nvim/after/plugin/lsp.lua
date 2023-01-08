@@ -114,8 +114,6 @@ lsp.on_attach(function(client, bufnr)
 		client.server_capabilities.document_formatting = false
 	end
 
-	--[[ K, gd, gi, gr, gl, gD etc are all set by default by lsp zero  ]]
-
 	vim.keymap.set("n", "<leader>vws", function()
 		vim.lsp.buf.workspace_symbol()
 	end)

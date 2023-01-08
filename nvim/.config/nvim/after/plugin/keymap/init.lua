@@ -47,27 +47,6 @@ vim.keymap.set("x","K", ":move '<-2<CR>gv-gv")
 vim.keymap.set("x","<A-j>", ":move '>+1<CR>gv-gv")
 vim.keymap.set("x","<A-k>", ":move '<-2<CR>gv-gv")
 
---LSP
-
-
--- DAP
-vim.keymap.set("n","<leader>dc", "<cmd>lua require'dap'.continue()<CR>")
-vim.keymap.set("n","<leader>du", "<cmd>lua require'dapui'.toggle()<CR>")
-vim.keymap.set("n","<leader>do", "<cmd>lua require'dap'.step_over()<CR>")
-vim.keymap.set("n","<leader>di", "<cmd>lua require'dap'.step_into()<CR>")
-vim.keymap.set("n","<leader>dO", "<cmd>lua require'dap'.step_out()<CR>")
-vim.keymap.set("n","<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
-vim.keymap.set("n","<leader>dC", "<cmd>lua require'dap'.clear_breakpoints()<CR>")
-vim.keymap.set("n","<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-vim.keymap.set("n","<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>")
-vim.keymap.set("n","<leader>dl", "<cmd>lua require'dap'.run_last()<CR>")
-vim.keymap.set("n","<leader>dx", "<cmd>lua require'dap'.terminate()<CR>")
-vim.keymap.set("n","<leader>ds", ":lua vim.g.set_process_id()<CR>")
-
--- Git
-
--- Other
-vim.keymap.set("n","<leader>gf", ":Format<cr>")
 -- Easy close terminal
 vim.keymap.set("t","<Esc>", "<C-\\><C-n>")
 vim.keymap.set("n","<leader>u", "<cmd>:UndotreeShow<CR>")
