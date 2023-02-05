@@ -110,7 +110,7 @@ lsp.on_attach(function(client, bufnr)
 		return
 	end
 
-    --[[ using null-ls with prettierd instead of tsserver build in ]]
+	--[[ using null-ls with prettierd instead of tsserver build in ]]
 	if client.name == "tsserver" then
 		client.server_capabilities.document_formatting = false
 	end
@@ -189,25 +189,12 @@ lsp.on_attach(function(client, bufnr)
 		}
 	end
 
-	vim.keymap.set("n", "<leader>vws", function()
-		vim.lsp.buf.workspace_symbol()
-	end)
-	vim.keymap.set("n", "<leader>lj", function()
-		vim.diagnostic.goto_next()
-	end)
-	vim.keymap.set("n", "gn", function()
-		vim.diagnostic.goto_next({ border = "rounded" })
-	end)
-	vim.keymap.set("n", "<leader>lk", function()
-		vim.diagnostic.goto_prev()
-	end)
-	vim.keymap.set("n", "gp", function()
-		vim.diagnostic.goto_prev({ border = "rounded" })
-	end)
-
-	vim.keymap.set("n", "<leader>la", function()
-		vim.lsp.buf.code_action()
-	end)
+	vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
+	vim.keymap.set("n", "<leader>lj", function() vim.diagnostic.goto_next() end)
+	vim.keymap.set("n", "gn", function() vim.diagnostic.goto_next({ border = "rounded" }) end)
+	vim.keymap.set("n", "<leader>lk", function() vim.diagnostic.goto_prev() end)
+	vim.keymap.set("n", "gp", function() vim.diagnostic.goto_prev({ border = "rounded" }) end)
+	vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end)
 	vim.keymap.set("n", "<leader>lco", function()
 		vim.lsp.buf.code_action({
 			filter = function(code_action)
@@ -221,40 +208,23 @@ lsp.on_attach(function(client, bufnr)
 			apply = true,
 		})
 	end)
-	vim.keymap.set("n", "<leader>lr", function()
-		vim.lsp.buf.rename()
-	end)
-	vim.keymap.set("i", "<C-h>", function()
-		vim.lsp.buf.signature_help()
-	end)
-
-	vim.keymap.set("n", "<leader>sh", function()
-		vim.lsp.buf.signature_help()
-	end)
-
+	vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end)
+	vim.keymap.set("n", "<leader>lR", vim.cmd.LspRestart)
+	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end)
+	vim.keymap.set("n", "<leader>sh", function() vim.lsp.buf.signature_help() end)
 	vim.keymap.set("n", "<leader>gf", vim.cmd.LspZeroFormat)
 	vim.keymap.set("n", "<leader>lf", vim.cmd.LspZeroFormat)
-
-	vim.keymap.set("n", "<leader>ld", function()
-		telescope_builtin.diagnostics({ bufnr = opts.buffer }) -- Document Diagnostics
-	end)
-	vim.keymap.set("n", "<leader>lw", function()
-		telescope_builtin.diagnostics() -- Workspace Diagnostics
-	end)
+    -- Document Diagnostics
+	vim.keymap.set("n", "<leader>ld", function() telescope_builtin.diagnostics({ bufnr = opts.buffer }) end)
+    --[[ Workspace Diagnostics ]]
+	vim.keymap.set("n", "<leader>lw", function() telescope_builtin.diagnostics() end)
 	vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo)
-	vim.keymap.set("n", "<leader>lq", function()
-		vim.lsp.diagnostic.set_loclist() -- Quickfix
-	end)
-	vim.keymap.set("n", "<leader>ls", function()
-		telescope_builtin.lsp_document_symbols() -- Document Symbols
-	end)
-	vim.keymap.set("n", "<leader>lS", function()
-		telescope_builtin.lsp_dynamic_workspace_symbols() -- Workspace Symbols
-	end)
-
-	vim.keymap.set("n", "<leader>q", function()
-		vim.diagnostic.setloclist()
-	end)
+    --[[ Quickfix ]]
+	vim.keymap.set("n", "<leader>lq", function() vim.lsp.diagnostic.set_loclist() end)
+    --[[ Document Symbols ]]
+	vim.keymap.set("n", "<leader>ls", function() telescope_builtin.lsp_document_symbols() end)
+    --[[ Workspace Symbols ]]
+	vim.keymap.set("n", "<leader>lS", function() telescope_builtin.lsp_dynamic_workspace_symbols() end)
 	vim.keymap.set("n", "<leader>td", vim.cmd.ToggleDiagnostics)
 end)
 
