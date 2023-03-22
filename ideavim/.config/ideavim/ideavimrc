@@ -34,6 +34,7 @@ map gd <Action>(GotoDeclaration)
 map <leader>la <Action>(Refactorings.QuickListPopupAction)
 map <leader>lr <Action>(RenameElement)
 map <leader>gr <Action>(FindUsages)
+map <leader>gf <Action>(ReformatCode)
 
 """ Code actions
 ""map <leader>la <Action>(Generate)
