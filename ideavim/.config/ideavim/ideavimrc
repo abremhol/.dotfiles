@@ -5,6 +5,7 @@ let mapleader=" "
 set surround
 set commentary
 set NERDTree
+set quickscope
 
 """ Plugin settings -------------------------
 
