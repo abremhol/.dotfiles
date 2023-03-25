@@ -4,6 +4,7 @@ let mapleader=" "
 """ Plugins  --------------------------------
 set surround
 set commentary
+set NERDTree
 
 """ Plugin settings -------------------------
 
@@ -24,21 +25,32 @@ set ideastatusicon=gray
 set idearefactormode=keep
 
 """ Mappings -------------------------------- 
-map <leader>z :source ~/.config/ideavim/ideavimrc<CR>
+map <leader>zl :source ~/.config/ideavim/ideavimrc<CR>
 map <leader>c <Action>(CommentByLineComment)
 
 """ LSP --------------------------------------
 map gh <Action>(ShowErrorDescription)
 map gi <Action>(GotoImplementation)
 map gd <Action>(GotoDeclaration)
-map <leader>la <Action>(Refactorings.QuickListPopupAction)
+map gn <Action>(GotoNextError)
+map gp <Action>(GotoPreviousError)
+map <leader>la <Action>(ShowIntentionActions)
 map <leader>lr <Action>(RenameElement)
 map <leader>gr <Action>(FindUsages)
 map <leader>gf <Action>(ReformatCode)
 
-""" Code actions
-""map <leader>la <Action>(Generate)
+""" Settings ---------------------------------
+map <leader>qk <Action>(ShowSettings)
+map <leader>zz <Action>(ToggleDistractionFreeMode)
+map <leader>e :NERDTreeToggle<CR>
+map <leader>ö <Action>(ActivateTerminalToolWindow)
+""" set ctrl ä in settings to hide window
 
+""" Testing ----------------------------------
+map <leader>t <Action>(RiderUnitTestQuickListPopupAction)
+
+""" Debugging ----------------------------------
+map <leader>b <Action>(ToggleLineBreakpoint)
 
 """ Telescope --------------------------------
 map <leader>ff <Action>(GotoFile)
@@ -53,5 +65,11 @@ vnoremap n nzz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
-""nnoremap <C-j> <Action>(EditorDown)
-""nnoremap <C-k> <Action>(EditorUp)
+""" AHK for binding ctrl j + k to arrow keys in rider remove comments
+" #IfWinActive
+"SetTitleMatchMode, 2
+"#IfWinExist ahk_exe rider64.exe || ahk_exe msrdc.exe
+" ^k::Send {Up}
+" ^j::Send {Down}
+" #IfWinExist
+
