@@ -10,3 +10,5 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh_profile
 
 alias luamake=/home/adam/personal/lua-language-server/3rd/luamake/luamake
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools

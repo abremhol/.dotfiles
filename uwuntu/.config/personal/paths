@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 addToPathFront /home/adam/n/bin
+addToPathFront $HOME/.dotnet
 
 addToPath /home/adam/personal/lua-language-server/bin/Linux
 addToPath /usr/local/go/bin
@@ -8,7 +9,6 @@ addToPath $HOME/.local/bin
 addToPath $GOPATH/bin
 addToPath $HOME/.yarn/bin
 addToPath /mnt/c/Users/abremhol/AppData/Local/Programs/Microsoft\ VS\ Code/bin
-addToPath $HOME/.dotnet
 addToPath $HOME/.local/share/JetBrains/Toolbox/scripts
 
 # ccache
