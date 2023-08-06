@@ -34,7 +34,6 @@ return packer.startup(function(use)
 
 	-- lsp
 	use("Hoffs/omnisharp-extended-lsp.nvim") -- fixes go to def in libraries in dotnet
-	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("glepnir/lspsaga.nvim")
 	use("RRethy/vim-illuminate")

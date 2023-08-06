@@ -117,11 +117,6 @@ lsp.on_attach(function(client, bufnr)
 		return
 	end
 
-	--[[ using null-ls with prettierd instead of tsserver build in ]]
-	if client.name == "tsserver" then
-		client.server_capabilities.document_formatting = false
-	end
-
 	--[[ temporary fix for error lsp/semantic_tokens.lua:344: Vim(redraw):E5248: until omnisharp fixes their tokentypes ]]
 	if client.name == "omnisharp" then
 		client.server_capabilities.semanticTokensProvider.legend = {
