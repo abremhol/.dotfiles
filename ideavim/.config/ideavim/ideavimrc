@@ -65,12 +65,3 @@ vnoremap N Nzz
 vnoremap n nzz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
-
-""" AHK for binding ctrl j + k to arrow keys in rider remove comments
-" #IfWinActive
-"SetTitleMatchMode, 2
-"#IfWinExist ahk_exe rider64.exe || ahk_exe msrdc.exe
-" ^k::Send {Up}
-" ^j::Send {Down}
-" #IfWinExist
-
