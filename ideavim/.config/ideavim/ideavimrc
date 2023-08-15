@@ -25,12 +25,12 @@ set ideajoin
 set ideastatusicon=gray
 set idearefactormode=keep
 
-""" Mappings -------------------------------- 
+""" Mappings --------------------------------
 map <leader>zl :source ~/.config/ideavim/ideavimrc<CR>
 map <leader>c <Action>(CommentByLineComment)
 
 """ LSP --------------------------------------
-map gh <Action>(ShowErrorDescription)
+map K <Action>(ShowErrorDescription)
 map gi <Action>(GotoImplementation)
 map gd <Action>(GotoDeclaration)
 map gn <Action>(GotoNextError)
@@ -45,7 +45,7 @@ map <leader>qk <Action>(ShowSettings)
 map <leader>zz <Action>(ToggleDistractionFreeMode)
 map <leader>e :NERDTreeToggle<CR>
 map <leader>ö <Action>(ActivateTerminalToolWindow)
-""" set ctrl ä in settings to hide window
+nmap <leader>ä <Action>(HideAllWindows)
 
 """ Testing ----------------------------------
 map <leader>t <Action>(RiderUnitTestQuickListPopupAction)
@@ -57,6 +57,7 @@ map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>ff <Action>(GotoFile)
 map <leader>fg <Action>(FindInPath)
 map <leader>fz <Action>(Find)
+map <leader>fb <Action>(RecentFiles)
 
 """ Movement ---------------------------------
 nnoremap N Nzz
@@ -65,3 +66,19 @@ vnoremap N Nzz
 vnoremap n nzz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
+
+""" Commands ---------------------------------
+command W w
+
+""" Original keybindings
+"""<c-shift-R> refactor this
+"""alt-insert in filemenu, create new
+"""esc file menu, return focus
+
+""" Other
+" this remap command in command mode
+" will delete what is currently highlighted and replace it 
+" with what is in the register BUT it will YANK (delete) it 
+" to a VOID register. Meaning I still have what I originally had
+" when I pasted. I don't loose the previous thing I YANKED!
+vnoremap <leader>p "_dP
