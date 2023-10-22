@@ -1,4 +1,5 @@
 DISABLE_MAGIC_FUNCTIONS=true
+DISABLE_AUTO_TITLE="true"
 export ZSH=$HOME/.oh-my-zsh
 export DOTFILES=$HOME/.dotfiles
 
