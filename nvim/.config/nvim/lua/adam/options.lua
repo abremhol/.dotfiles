@@ -1,4 +1,8 @@
 -- :help otions
+local home = os.getenv("HOME")
+if home == nil then
+  home = os.getenv("USERPROFILE")
+end
 
 local options = {
 	--prime
@@ -13,7 +17,7 @@ local options = {
 	wrap = false, -- display lines as one long line
     swapfile = false, -- creates a swapfile
 	backup = false, -- creates a backup file
-	undodir = os.getenv("HOME") .. "/.vim/undodir",
+	undodir = home .. "/.vim/undodir",
 	undofile = true, -- enable persistent undo
 	hlsearch = false, -- highlight all matches on previous search pattern
 	incsearch = true,

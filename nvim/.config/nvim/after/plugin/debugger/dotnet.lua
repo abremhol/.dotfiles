@@ -1,4 +1,7 @@
 local home = os.getenv("HOME")
+if home == nil then
+  home = os.getenv("USERPROFILE")
+end
 local dap = require("dap")
 require("nvim-dap-virtual-text").setup()
 

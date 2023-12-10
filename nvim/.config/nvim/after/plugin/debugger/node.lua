@@ -1,6 +1,8 @@
 local dap = require("dap")
 local home = os.getenv("HOME")
-
+if home == nil then
+  home = os.getenv("USERPROFILE")
+end
 dap.adapters.node2 = {
 	type = "executable",
 	command = "node",
