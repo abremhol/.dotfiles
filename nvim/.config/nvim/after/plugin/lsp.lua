@@ -40,10 +40,14 @@ require("lspconfig").jsonls.setup({
 	},
 })
 
-local omnisharp_bin = vim.fn.stdpath("data") .. "/lsp_servers/omnisharp/omnisharp/OmniSharp"
+local mason_registry = require("mason-registry")
+local omnisharp = mason_registry.get_package("omnisharp") -- note that this will error if you provide a non-existent package name
+local mason_omnisharp_path = omnisharp:get_install_path() .. "/omnisharp"
+
+--[[ local omnisharp_bin = vim.fn.stdpath("data") .. "/lsp_servers/omnisharp/omnisharp/OmniSharp" ]]
 lsp.configure("omnisharp", {
 	-- root_dir = lspconfig.util.root_pattern('.git'),
-	cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+	cmd = { mason_omnisharp_path, "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
 	-- for gettigng lsp on libraries
 	enable_editorconfig_support = true,
 	handlers = {
