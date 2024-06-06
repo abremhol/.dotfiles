@@ -28,36 +28,70 @@ set idearefactormode=keep
 """ Mappings --------------------------------
 map <leader>zl :source ~/.config/ideavim/ideavimrc<CR>
 map <leader>c <Action>(CommentByLineComment)
+map <leader>C <Action>(CommentByBlockComment)
 
 """ LSP --------------------------------------
-map K <Action>(ShowErrorDescription)
+map K <Action>(QuickPreview)
 map gi <Action>(GotoImplementation)
 map gd <Action>(GotoDeclaration)
 map gn <Action>(GotoNextError)
 map gp <Action>(GotoPreviousError)
+imap <C-i> <Action>(ParameterInfo)
 map <leader>la <Action>(ShowIntentionActions)
 map <leader>lr <Action>(RenameElement)
 map <leader>gr <Action>(FindUsages)
 map <leader>gf <Action>(ReformatCode)
 
+" run
+
+" location
+nmap <C-i> <Action>(Back)
+nmap <C-o> <Action>(Forward)
+
+" window
+nmap <C-Tab> <Action>(PreviousTab)
+nmap <Tab> <Action>(NextTab)
+
+nmap <leader>1 <Action>(GoToTab1)
+nmap <leader>2 <Action>(GoToTab2)
+nmap <leader>3 <Action>(GoToTab3)
+nmap <leader>4 <Action>(GoToTab4)
+nmap <leader>5 <Action>(GoToTab5)
+nmap <leader>6 <Action>(GoToTab6)
+nmap <leader>7 <Action>(GoToTab7)
+nmap <leader>8 <Action>(GoToTab8)
+nmap <leader>9 <Action>(GoToTab9)
+
+" highlight yank (bundle plugin)
+set highlightedyank
+let g:highlightedyank_highlight_duration = "1000"
+let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
+
+" terminal
+nmap <leader>tt <Action>(ActivateTerminalToolWindow)
+nmap <leader>tc <Action>(Terminal.OpenInTerminal)
+
 """ Settings ---------------------------------
 map <leader>qk <Action>(ShowSettings)
 map <leader>zz <Action>(ToggleDistractionFreeMode)
 map <leader>e :NERDTreeToggle<CR>
+map <C-w>h :NERDTreeFocus<CR>
+map <C-w>l <Action>(FocusEditor)
 map <leader>ö <Action>(ActivateTerminalToolWindow)
 nmap <leader>ä <Action>(HideAllWindows)
 
 """ Testing ----------------------------------
-map <leader>t <Action>(RiderUnitTestQuickListPopupAction)
+map <leader>ut <Action>(RiderUnitTestQuickListPopupAction)
 
 """ Debugging ----------------------------------
 map <leader>b <Action>(ToggleLineBreakpoint)
 
 """ Telescope --------------------------------
-map <leader>ff <Action>(GotoFile)
-map <leader>fg <Action>(FindInPath)
-map <leader>fz <Action>(Find)
-map <leader>fb <Action>(RecentFiles)
+nmap <leader>ff <Action>(GotoFile)
+nmap <leader>fg <Action>(FindInPath)
+nmap <leader>fz <Action>(Find)
+nmap <leader>fb <Action>(RecentFiles)
+nmap <leader>rp <Action>(ReplaceInPath)
 
 """ Movement ---------------------------------
 nnoremap N Nzz
@@ -66,6 +100,10 @@ vnoremap N Nzz
 vnoremap n nzz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
+
+" continuous shift
+xnoremap < <gv
+xnoremap > >gv
 
 """ Commands ---------------------------------
 command W w
