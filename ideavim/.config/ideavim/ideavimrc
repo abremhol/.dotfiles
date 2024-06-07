@@ -42,13 +42,15 @@ map <leader>lr <Action>(RenameElement)
 map <leader>gr <Action>(FindUsages)
 map <leader>gf <Action>(ReformatCode)
 
-" run
-
-" location
+" enhanced location
 nmap <C-i> <Action>(Back)
 nmap <C-o> <Action>(Forward)
 
-" window
+" Popup navigation - also set editor action down and edtor action up to c-j and c-k in settings
+map <C-j> <Action>(PopupMenu-selectnext)
+map <C-k> <Action>(PopupMenu-selectprev)
+
+" tabs ---------------------------------------
 nmap <C-Tab> <Action>(PreviousTab)
 nmap <Tab> <Action>(NextTab)
 
@@ -62,14 +64,6 @@ nmap <leader>7 <Action>(GoToTab7)
 nmap <leader>8 <Action>(GoToTab8)
 nmap <leader>9 <Action>(GoToTab9)
 
-" highlight yank (bundle plugin)
-set highlightedyank
-let g:highlightedyank_highlight_duration = "1000"
-let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
-
-" terminal
-nmap <leader>tt <Action>(ActivateTerminalToolWindow)
-nmap <leader>tc <Action>(Terminal.OpenInTerminal)
 
 """ Settings ---------------------------------
 map <leader>qk <Action>(ShowSettings)
@@ -77,21 +71,35 @@ map <leader>zz <Action>(ToggleDistractionFreeMode)
 map <leader>e :NERDTreeToggle<CR>
 map <C-w>h :NERDTreeFocus<CR>
 map <C-w>l <Action>(FocusEditor)
-map <leader>ö <Action>(ActivateTerminalToolWindow)
-nmap <leader>ä <Action>(HideAllWindows)
+map <C-ö> <Action>(ActivateTerminalToolWindow)
+"" needs to be done in settings
+map <C-ä> <Action>(HideActiveWindow)
+
+" build --------------------------------------
+nmap <leader>bb <Action>(BuildMenu)
 
 """ Testing ----------------------------------
 map <leader>ut <Action>(RiderUnitTestQuickListPopupAction)
 
 """ Debugging ----------------------------------
-map <leader>b <Action>(ToggleLineBreakpoint)
+nmap <leader>dr <Action>(Debug)
+nmap <leader>ds <Action>(Stop)
+nmap <leader>db <Action>(ToggleLineBreakpoint)
 
 """ Telescope --------------------------------
+"find files
 nmap <leader>ff <Action>(GotoFile)
+"find grep
 nmap <leader>fg <Action>(FindInPath)
+"find fuzzy
 nmap <leader>fz <Action>(Find)
+"find in buffer
 nmap <leader>fb <Action>(RecentFiles)
-nmap <leader>rp <Action>(ReplaceInPath)
+"find and replace
+nmap <leader>fr <Action>(ReplaceInPath)
+
+" todo --------------------------------------
+nmap <leader>td <Action>(ActivateTODOToolWindow)
 
 """ Movement ---------------------------------
 nnoremap N Nzz
@@ -120,3 +128,8 @@ command W w
 " to a VOID register. Meaning I still have what I originally had
 " when I pasted. I don't loose the previous thing I YANKED!
 vnoremap <leader>p "_dP
+
+" highlight yank (bundle plugin)
+set highlightedyank
+let g:highlightedyank_highlight_duration = "1000"
+let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
