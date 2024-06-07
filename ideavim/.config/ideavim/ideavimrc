@@ -31,16 +31,21 @@ map <leader>c <Action>(CommentByLineComment)
 map <leader>C <Action>(CommentByBlockComment)
 
 """ LSP --------------------------------------
-map K <Action>(QuickPreview)
-map gi <Action>(GotoImplementation)
-map gd <Action>(GotoDeclaration)
-map gn <Action>(GotoNextError)
-map gp <Action>(GotoPreviousError)
+nmap K <Action>(QuickPreview)
 imap <C-i> <Action>(ParameterInfo)
-map <leader>la <Action>(ShowIntentionActions)
+nmap <leader>la <Action>(ShowIntentionActions)
 map <leader>lr <Action>(RenameElement)
-map <leader>gr <Action>(FindUsages)
-map <leader>gf <Action>(ReformatCode)
+map <leader>rf <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>gf <Action>(ReformatCode)
+nmap <leader>oi <Action>(OptimizeImports)
+
+" goto --------------------------------------
+nmap gi <Action>(GotoImplementation)
+nmap gd <Action>(GotoDeclaration)
+nmap gD <Action>(GotoTypeDeclaration)
+nmap gn <Action>(GotoNextError)
+nmap gp <Action>(GotoPreviousError)
+nmap gr <Action>(FindUsages)
 
 " enhanced location
 nmap <C-i> <Action>(Back)
@@ -49,6 +54,12 @@ nmap <C-o> <Action>(Forward)
 " Popup navigation - also set editor action down and edtor action up to c-j and c-k in settings
 map <C-j> <Action>(PopupMenu-selectnext)
 map <C-k> <Action>(PopupMenu-selectprev)
+
+" buffer (buffer < window < tab)
+nmap <leader>xx <Action>(CloseContent)
+nmap <leader>xa <Action>(CloseAllEditors)
+nmap <leader>xo <Action>(CloseAllEditorsButActive)
+nmap <leader>xp <Action>(CloseAllUnpinnedEditors)
 
 " tabs ---------------------------------------
 nmap <C-Tab> <Action>(PreviousTab)
@@ -69,14 +80,14 @@ nmap <leader>9 <Action>(GoToTab9)
 map <leader>qk <Action>(ShowSettings)
 map <leader>zz <Action>(ToggleDistractionFreeMode)
 map <leader>e :NERDTreeToggle<CR>
-map <C-w>h :NERDTreeFocus<CR>
-map <C-w>l <Action>(FocusEditor)
-map <C-ö> <Action>(ActivateTerminalToolWindow)
+map <leader>nf :NERDTreeFocus<CR>
+nmap <C-ö> <Action>(ActivateTerminalToolWindow)
+nmap <leader>ww <Action>(HideAllWindows)
 "" needs to be done in settings
 map <C-ä> <Action>(HideActiveWindow)
 
 " build --------------------------------------
-nmap <leader>bb <Action>(BuildMenu)
+nmap <leader>bb <Action>(BuildWholeSolutionAction)
 
 """ Testing ----------------------------------
 map <leader>ut <Action>(RiderUnitTestQuickListPopupAction)
@@ -113,13 +124,11 @@ nnoremap <C-d> <C-d>zz
 xnoremap < <gv
 xnoremap > >gv
 
+" alias select all
+nmap <C-a> ggVG"+y
+
 """ Commands ---------------------------------
 command W w
-
-""" Original keybindings
-"""<c-shift-R> refactor this
-"""alt-insert in filemenu, create new
-"""esc file menu, return focus
 
 """ Other
 " this remap command in command mode
