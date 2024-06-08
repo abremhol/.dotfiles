@@ -29,12 +29,15 @@ set idearefactormode=keep
 map <leader>zl :source ~/.config/ideavim/ideavimrc<CR>
 map <leader>c <Action>(CommentByLineComment)
 map <leader>C <Action>(CommentByBlockComment)
+"" make in settings also
+nmap <C-S>c <Action>(copilot.chat.show)
 
 """ LSP --------------------------------------
 nmap K <Action>(QuickPreview)
 imap <C-i> <Action>(ParameterInfo)
 nmap <leader>la <Action>(ShowIntentionActions)
 map <leader>lr <Action>(RenameElement)
+map F2 <Action>(RenameElement)
 map <leader>rf <Action>(Refactorings.QuickListPopupAction)
 nmap <leader>gf <Action>(ReformatCode)
 nmap <leader>oi <Action>(OptimizeImports)
@@ -46,6 +49,7 @@ nmap gD <Action>(GotoTypeDeclaration)
 nmap gn <Action>(GotoNextError)
 nmap gp <Action>(GotoPreviousError)
 nmap gr <Action>(FindUsages)
+nmap gb <Action>(Back)
 
 " enhanced location
 nmap <C-i> <Action>(Back)
@@ -96,6 +100,13 @@ map <leader>ut <Action>(RiderUnitTestQuickListPopupAction)
 nmap <leader>dr <Action>(Debug)
 nmap <leader>ds <Action>(Stop)
 nmap <leader>db <Action>(ToggleLineBreakpoint)
+""" also add ctrl + arrows for debugging
+""" ctrl up step out
+""" ctrl down step into
+""" ctrl right step over
+""" ctrl left continue
+
+""" Git --------------------------------------
 
 """ Telescope --------------------------------
 "find files
