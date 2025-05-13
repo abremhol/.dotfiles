@@ -81,13 +81,13 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 
 	-- Debugging
-	use({
-		"mfussenegger/nvim-dap",
-		requires = {
-			"rcarriga/nvim-dap-ui",
-			"theHamsta/nvim-dap-virtual-text",
-		},
-	})
+	--[[ use({ ]]
+	--[[ 	"mfussenegger/nvim-dap", ]]
+	--[[ 	requires = { ]]
+	--[[ 		"rcarriga/nvim-dap-ui", ]]
+	--[[ 		"theHamsta/nvim-dap-virtual-text", ]]
+	--[[ 	}, ]]
+	--[[ }) ]]
 
 	use({
 		"rose-pine/neovim",
