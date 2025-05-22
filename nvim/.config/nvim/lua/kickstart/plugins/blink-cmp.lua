@@ -35,6 +35,7 @@ return {
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
     opts = {
+
       keymap = {
         ['<C-k>'] = { 'select_prev', 'fallback' },
         ['<C-j>'] = { 'select_next', 'fallback' },
@@ -81,9 +82,16 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'easy-dotnet', 'path', 'snippets', 'lazydev' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          ['easy-dotnet'] = {
+            name = 'easy-dotnet',
+            enabled = true,
+            module = 'easy-dotnet.completion.blink',
+            score_offset = 10000,
+            async = true,
+          },
         },
       },
 
@@ -96,7 +104,7 @@ return {
       -- the rust implementation via `'prefer_rust_with_warning'`
       --
       -- See :h blink-cmp-config-fuzzy for more information
-      fuzzy = { implementation = 'lua' },
+      fuzzy = { implementation = 'prefer_rust_with_warning' },
 
       -- Shows a signature help window while you type arguments for a function
       signature = { enabled = true },

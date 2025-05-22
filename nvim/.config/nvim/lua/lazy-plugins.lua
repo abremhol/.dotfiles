@@ -54,8 +54,9 @@ require('lazy').setup({
   require 'kickstart/plugins/zenmode',
   require 'kickstart/plugins/comment',
   require 'kickstart/plugins/maximizer',
-  require 'kickstart/plugins/maximizer',
+  require 'kickstart/plugins/undotree',
   require 'kickstart/plugins/roslyn',
+  require 'kickstart/plugins/easy-dotnet',
 
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
