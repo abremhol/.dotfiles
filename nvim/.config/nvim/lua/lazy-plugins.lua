@@ -57,6 +57,8 @@ require('lazy').setup({
   require 'kickstart/plugins/undotree',
   require 'kickstart/plugins/roslyn',
   require 'kickstart/plugins/easy-dotnet',
+  require 'kickstart/plugins/copilot',
+  require 'kickstart/plugins/copilot-chat',
 
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',

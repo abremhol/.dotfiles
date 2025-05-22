@@ -1,8 +1,11 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
+  "CopilotChat.nvim": { "branch": "main", "commit": "16d897fd43d07e3b54478ccdb2f8a16e4df4f45a" },
   "LuaSnip": { "branch": "master", "commit": "458560534a73f7f8d7a11a146c801db00b081df0" },
   "blink.cmp": { "branch": "main", "commit": "022521a8910a5543b0251b21c9e1a1e989745796" },
   "conform.nvim": { "branch": "master", "commit": "6feb2f28f9a9385e401857b21eeac3c1b66dd628" },
+  "copilot.lua": { "branch": "master", "commit": "96e1bb1963f351700bf6737ef3695e8a0b90b12a" },
+  "copilot.vim": { "branch": "release", "commit": "d1e8429bef7f7709586886b0a23a46fbecc685c4" },
   "easy-dotnet.nvim": { "branch": "main", "commit": "8cf9e048a0fd0d7ea35e90e95218dea9b1ab0c62" },
   "fidget.nvim": { "branch": "main", "commit": "d9ba6b7bfe29b3119a610892af67602641da778e" },
   "gitsigns.nvim": { "branch": "main", "commit": "8b729e489f1475615dc6c9737da917b3bc163605" },
