@@ -51,10 +51,13 @@ return {
     vim.keymap.set('n', '<leader>dr', dap.repl.toggle, {})
     vim.keymap.set('n', '<leader>dj', dap.down, {})
     vim.keymap.set('n', '<leader>dk', dap.up, {})
-    vim.keymap.set('n', '<F11>', dap.step_into, {})
-    vim.keymap.set('n', '<F12>', dap.step_out, {})
     vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, {})
-    vim.keymap.set('n', '<F2>', require('dap.ui.widgets').hover, {})
+    vim.keymap.set('n', 'K', require('dap.ui.widgets').hover, {})
+
+    vim.keymap.set('n', '<Right>', dap.step_over, {})
+    vim.keymap.set('n', '<Down>', dap.step_into, {})
+    vim.keymap.set('n', '<Up>', dap.step_out, {})
+    vim.keymap.set('n', '<Left>', dap.continue, {})
 
     local function file_exists(path)
       local stat = vim.loop.fs_stat(path)
