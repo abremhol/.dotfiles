@@ -39,6 +39,15 @@ return {
       dapui.close()
     end
 
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = 'dap-float',
+      callback = function(args)
+        vim.keymap.set('n', 'q', function()
+          vim.api.nvim_win_close(0, true)
+        end, { buffer = args.buf, silent = true })
+      end,
+    })
+
     vim.keymap.set('n', 'q', function()
       dap.close()
       dapui.close()
