@@ -7,6 +7,7 @@ addToPath /home/adam/personal/lua-language-server/bin/Linux
 addToPath /usr/local/go/bin
 addToPath $HOME/.local/bin
 addToPath $GOPATH/bin
+addToPath $HOME/.cargo/bin
 addToPath $HOME/.yarn/bin
 addToPath /mnt/c/Users/abremhol/AppData/Local/Programs/Microsoft\ VS\ Code/bin
 addToPath $HOME/.local/share/JetBrains/Toolbox/scripts
