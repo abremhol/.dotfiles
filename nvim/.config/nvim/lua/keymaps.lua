@@ -7,10 +7,8 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeShow)
+-- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
@@ -21,7 +19,7 @@ vim.keymap.set('n', 'J', 'mzJ`z')
 -- Sessionizer
 vim.keymap.set('n', '<C-f>', '<cmd>:silent !tmux neww tmux-sessionizer<CR>')
 
-vim.keymap.set('n', '<leader><leader>x', '<cmd>luafile %<CR>')
+-- vim.keymap.set('n', '<leader><leader>x', '<cmd>luafile %<CR>')
 
 -- Resize with arrows
 vim.keymap.set('n', '<C-Up>', ':resize -2<CR>')
@@ -66,7 +64,6 @@ vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv")
 
 -- Easy close terminal
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
-vim.keymap.set('n', '<leader>u', '<cmd>:UndotreeShow<CR>')
 vim.keymap.set('n', '<leader>zz', '<cmd>ZenMode<CR>')
 
 -- [[ Highlight on yank ]]
