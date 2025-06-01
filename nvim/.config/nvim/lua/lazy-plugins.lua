@@ -15,7 +15,7 @@ require('lazy').setup({
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
-  -- keys can be used to configure plugin behavior/loading/etc.
+  -- keys can be used to confiure plugin behavior/loading/etc.
   --
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
   --
