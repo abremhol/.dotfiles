@@ -30,6 +30,12 @@ return {
           return true
         end,
       },
+      should_attach = function(_, bufname)
+        if string.match(bufname, 'env') then
+          return false
+        end
+        return true
+      end,
       config = function(_, opts)
         local copilot = require 'copilot.suggestion'
         local luasnip = require 'luasnip'
