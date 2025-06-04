@@ -60,6 +60,7 @@ require('lazy').setup({
   require 'kickstart/plugins/copilot',
   require 'kickstart/plugins/copilot-chat',
   require 'kickstart/plugins/neogit',
+  require 'kickstart/plugins/trouble',
 
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
