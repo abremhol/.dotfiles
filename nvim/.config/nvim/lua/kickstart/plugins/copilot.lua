@@ -6,7 +6,7 @@ return {
     event = 'InsertEnter',
     opts = {
       -- I don't find the panel useful.
-      panel = { enabled = true },
+      panel = { enabled = false },
       suggestion = {
         auto_trigger = true,
         -- Use alt to interact with Copilot.
