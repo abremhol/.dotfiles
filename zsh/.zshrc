@@ -10,6 +10,11 @@ plugins=(git zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh_profile
 
+source ~/.local/share/omakub/defaults/bash/shell
+source ~/.local/share/omakub/defaults/bash/aliases
+source ~/.local/share/omakub/defaults/bash/functions
+
 alias luamake=/home/adam/personal/lua-language-server/3rd/luamake/luamake
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+export OMAKUB_PATH=$HOME/.local/share/omakub
