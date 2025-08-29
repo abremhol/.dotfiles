@@ -9,6 +9,7 @@ plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh_profile
+eval "$(zoxide init zsh)"
 
 source ~/.local/share/omakub/defaults/bash/shell
 source ~/.local/share/omakub/defaults/bash/aliases
