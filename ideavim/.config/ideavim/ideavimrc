@@ -15,7 +15,7 @@ set so=8
 set incsearch
 set nu
 set visualbell
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 set hlsearch
 set ignorecase smartcase
 

@@ -33,8 +33,6 @@ require('lazy').setup({
 
   require 'kickstart/plugins/blink-cmp',
 
-  require 'kickstart/plugins/tokyonight',
-
   require 'kickstart/plugins/todo-comments',
 
   require 'kickstart/plugins/mini',
@@ -50,6 +48,7 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
+  require 'kickstart/plugins/tokyonight',
   require 'kickstart/plugins/nvim-tree',
   require 'kickstart/plugins/zenmode',
   require 'kickstart/plugins/comment',
