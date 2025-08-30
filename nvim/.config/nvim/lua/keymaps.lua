@@ -81,18 +81,33 @@ vim.keymap.set({ 'n', 'v' }, '<leader>gf', function()
   local range = nil
   -- Check if in visual mode and get the selection range
   if vim.fn.mode() == 'v' or vim.fn.mode() == 'V' or vim.fn.mode() == '\22' then
-    -- Get the start and end of visual selection
-    local start_line = vim.fn.line "'<"
-    local start_col = vim.fn.col "'<"
-    local end_line = vim.fn.line "'>"
-    local end_col = vim.fn.col "'>"
-
-    range = {
-      start = { start_line, start_col - 1 },
-      ['end'] = { end_line, end_col - 1 },
-    }
     -- Exit visual mode to avoid issues
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
+
+    -- Get the start and end of visual selection
+    local start_pos = vim.api.nvim_buf_get_mark(0, '<')
+    local end_pos = vim.api.nvim_buf_get_mark(0, '>')
+
+    -- Get the line content to calculate proper column indices
+    local start_line_content = vim.api.nvim_buf_get_lines(0, start_pos[1] - 1, start_pos[1], false)[1] or ''
+    local end_line_content = vim.api.nvim_buf_get_lines(0, end_pos[1] - 1, end_pos[1], false)[1] or ''
+
+    -- Ensure column indices are within bounds
+    local start_col = math.min(start_pos[2], #start_line_content)
+    local end_col = math.min(end_pos[2] + 1, #end_line_content)
+
+    -- Create range object with 0-indexed positions as required by conform
+    range = {
+      start = { start_pos[1], start_col },
+      ['end'] = { end_pos[1], end_col },
+    }
+
+    -- Ensure valid range
+    local line_count = vim.api.nvim_buf_line_count(0)
+    if range.start[1] > line_count or range['end'][1] > line_count then
+      vim.notify('Invalid range selection', vim.log.levels.ERROR)
+      return
+    end
   end
 
   -- Format with or without range

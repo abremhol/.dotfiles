@@ -56,9 +56,8 @@ require('lazy').setup({
   require 'kickstart/plugins/undotree',
   require 'kickstart/plugins/roslyn',
   require 'kickstart/plugins/easy-dotnet',
-  -- require 'kickstart/plugins/copilot',
-  require 'kickstart/plugins/copilot-v4',
-  require 'kickstart/plugins/neogit',
+  require 'kickstart/plugins/copilot',
+  require 'kickstart/plugins/lazygit',
   require 'kickstart/plugins/trouble',
 
   require 'kickstart.plugins.debug',
