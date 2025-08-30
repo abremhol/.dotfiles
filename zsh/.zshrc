@@ -16,6 +16,19 @@ source ~/.local/share/omakub/defaults/bash/aliases
 source ~/.local/share/omakub/defaults/bash/functions
 
 alias luamake=/home/adam/personal/lua-language-server/3rd/luamake/luamake
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+    alias nvim=nvr -cc split --remote-wait +'set bufhidden=wipe'
+fi
+
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+    export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+    export EDITOR="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+else
+    export VISUAL="nvim"
+    export EDITOR="nvim"
+fi
+
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 export OMAKUB_PATH=$HOME/.local/share/omakub
+

@@ -101,4 +101,8 @@ vim.api.nvim_create_user_command('Wqa', 'wqa', {})
 vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
 vim.api.nvim_create_user_command('Q', 'q', {})
--- vim: ts=2 sts=2 sw=2 et
+
+if vim.fn.has 'nvim' == 1 and vim.fn.executable 'nvr' == 1 then
+  vim.env.GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+end
+-- endm: ts=2 sts=2 sw=2 et
