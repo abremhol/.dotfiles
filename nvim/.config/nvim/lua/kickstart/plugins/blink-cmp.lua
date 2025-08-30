@@ -4,6 +4,8 @@ return {
     event = 'VimEnter',
     version = '1.*',
     dependencies = {
+
+      'fang2hou/blink-copilot',
       -- Snippet Engine
       {
         'L3MON4D3/LuaSnip',
@@ -85,7 +87,7 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'easy-dotnet', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'copilot', 'easy-dotnet', 'path', 'snippets', 'lazydev' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
           ['easy-dotnet'] = {
@@ -93,6 +95,12 @@ return {
             enabled = true,
             module = 'easy-dotnet.completion.blink',
             score_offset = 10000,
+            async = true,
+          },
+          copilot = {
+            name = 'copilot',
+            module = 'blink-copilot',
+            score_offset = 100,
             async = true,
           },
         },
