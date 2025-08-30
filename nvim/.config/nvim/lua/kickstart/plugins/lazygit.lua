@@ -17,4 +17,11 @@ return {
   keys = {
     { '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
   },
+  config = function()
+    vim.g.lazygit_floating_window_use_plenary = 1
+    -- Force Vim keybindings for commit editor
+    vim.g.lazygit_use_neovim_remote = 1
+    -- Set editor mode to use Vim keybindings
+    vim.g.lazygit_commit_editor_mode = 'vim'
+  end,
 }

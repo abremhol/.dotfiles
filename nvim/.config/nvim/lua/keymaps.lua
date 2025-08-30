@@ -63,7 +63,6 @@ vim.keymap.set('x', '<A-j>', ":move '>+1<CR>gv-gv")
 vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv")
 
 -- Easy close terminal
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 vim.keymap.set('n', '<leader>zz', '<cmd>ZenMode<CR>')
 
 -- [[ Highlight on yank ]]

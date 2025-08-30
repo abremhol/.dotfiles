@@ -59,6 +59,7 @@ require('lazy').setup({
   require 'kickstart/plugins/copilot',
   require 'kickstart/plugins/lazygit',
   require 'kickstart/plugins/trouble',
+  require 'kickstart/plugins/remote-nvim',
 
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
