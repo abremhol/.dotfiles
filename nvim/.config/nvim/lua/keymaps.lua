@@ -77,4 +77,33 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.keymap.set({ 'n', 'v' }, '<leader>gf', function()
+  local range = nil
+  -- Check if in visual mode and get the selection range
+  if vim.fn.mode() == 'v' or vim.fn.mode() == 'V' or vim.fn.mode() == '\22' then
+    -- Get the start and end of visual selection
+    local start_line = vim.fn.line "'<"
+    local start_col = vim.fn.col "'<"
+    local end_line = vim.fn.line "'>"
+    local end_col = vim.fn.col "'>"
+
+    range = {
+      start = { start_line, start_col - 1 },
+      ['end'] = { end_line, end_col - 1 },
+    }
+    -- Exit visual mode to avoid issues
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
+  end
+
+  -- Format with or without range
+  require('conform').format({
+    async = true,
+    range = range,
+    lsp_fallback = true,
+  }, function(err)
+    if err then
+      vim.notify('Formatting error: ' .. err, vim.log.levels.ERROR)
+    end
+  end)
+end, { desc = 'Format code (normal=file, visual=selection)' })
 -- vim: ts=2 sts=2 sw=2 et
