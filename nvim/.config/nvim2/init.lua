@@ -1,5 +1,0 @@
-require "adam.globals"
-require "adam.packer"
-require "adam.options"
-require "adam.autocmds"
-require "adam.usercommands"
