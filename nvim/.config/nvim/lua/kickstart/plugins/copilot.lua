@@ -42,7 +42,7 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
       -- Copilot authorization
-      'github/copilot.lua',
+      'github/copilot.vim',
       -- Progress options optional
       'j-hui/fidget.nvim',
       'ravitemer/codecompanion-history.nvim',
