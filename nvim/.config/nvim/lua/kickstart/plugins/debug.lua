@@ -61,7 +61,16 @@ return {
     vim.keymap.set('n', '<leader>dj', dap.down, {})
     vim.keymap.set('n', '<leader>dk', dap.up, {})
     vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, {})
-    vim.keymap.set('n', 'K', require('dap.ui.widgets').hover, {})
+
+    local function smart_hover()
+      if dap.session() then
+        require('dap.ui.widgets').hover()
+      else
+        vim.lsp.buf.hover()
+      end
+    end
+
+    vim.keymap.set('n', 'K', smart_hover, { desc = 'Hover (LSP or DAP)' })
 
     vim.keymap.set('n', '<Right>', dap.step_over, {})
     vim.keymap.set('n', '<Down>', dap.step_into, {})

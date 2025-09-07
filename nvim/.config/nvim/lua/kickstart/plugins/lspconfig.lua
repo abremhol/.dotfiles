@@ -85,6 +85,9 @@ return {
           map('<leader>ln', vim.lsp.buf.rename, '[L]sp Re[N]ame')
           map('<F2>', vim.lsp.buf.rename, '[R]e[n]ame')
 
+          map('<C-i>', vim.lsp.buf.signature_help, 'Signature Help', 'i')
+          map('<leader>lsh', vim.lsp.buf.signature_help, 'Signature Help', 'n')
+
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>lca', vim.lsp.buf.code_action, '[Lsp] [C]ode [A]ction', { 'n', 'x' })
