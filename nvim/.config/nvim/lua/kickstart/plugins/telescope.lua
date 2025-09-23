@@ -75,6 +75,10 @@ return {
             file_ignore_patterns = { '.git', 'node_modules', 'bin', 'obj' },
             no_ignore = true,
           },
+          buffers = {
+            sort_mru = true,
+            ignore_current_buffer = false,
+          },
           -- Default configuration for builtin pickers goes here:
           -- picker_name = {
           --   picker_config_key = value,
