@@ -76,7 +76,7 @@ return {
             return adapters.extend('copilot', {
               schema = {
                 model = {
-                  default = 'claude-3.7-sonnet',
+                  default = 'gpt-4.1',
                 },
               },
             })
