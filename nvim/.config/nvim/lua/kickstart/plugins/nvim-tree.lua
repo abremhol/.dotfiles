@@ -29,6 +29,9 @@ return {
       update_focused_file = {
         enable = true,
       },
+      view = {
+        width = 40, -- Set the width to 40 columns (default is 30)
+      },
     }
   end,
 }

@@ -70,9 +70,7 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
-
 vim.o.number = true
-vim.o.relativenumber = true -- set relative numbered lines
 vim.o.errorbells = false -- no error bells
 vim.o.tabstop = 4 -- insert 2 spaces for a tab
 vim.o.softtabstop = 4
@@ -93,9 +91,8 @@ vim.o.cmdheight = 1 -- more space in the neovim command line for displaying mess
 vim.o.colorcolumn = '131' -- vertical line to show recommended line length
 
 -- custom
-mouse =
-  'a', -- allow the mouse to be used in neovim
-  vim.api.nvim_create_user_command('WQ', 'wq', {})
+mouse = 'a' -- allow the mouse to be used in neovim
+vim.api.nvim_create_user_command('WQ', 'wq', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('Wqa', 'wqa', {})
 vim.api.nvim_create_user_command('W', 'w', {})

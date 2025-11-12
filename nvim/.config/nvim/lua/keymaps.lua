@@ -32,6 +32,10 @@ vim.keymap.set('x', '<leader>c', "<ESC><CMD>lua require('Comment.api').toggle.li
 vim.keymap.set('n', '<leader>c', "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>")
 vim.keymap.set('v', '<leader>c', "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>")
 
+-- easy dotnet
+vim.keymap.set('n', '<leader>tr', '<cmd>Dotnet testrunner<CR>')
+vim.keymap.set('n', '<leader>tb', '<cmd>Dotnet build<CR>')
+
 -- Nvim Tree
 vim.keymap.set('n', '<leader>e', vim.cmd.NvimTreeFindFileToggle)
 vim.keymap.set('n', '<leader>r', vim.cmd.NvimTreeRefresh)
