@@ -53,7 +53,6 @@ require('lazy').setup({
   require 'kickstart/plugins/comment',
   require 'kickstart/plugins/maximizer',
   require 'kickstart/plugins/undotree',
-  require 'kickstart/plugins/roslyn',
   require 'kickstart/plugins/easy-dotnet',
   require 'kickstart/plugins/copilot',
   require 'kickstart/plugins/lazygit',
