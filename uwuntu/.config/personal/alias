@@ -7,5 +7,7 @@ alias \
 	rm="rm -vI" \
 	mkd="mkdir -pv"
 
+alias vv='NVIM_APPNAME=nvim-new nvim'
+
 #User chrome in windows
 #alias chrome="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"

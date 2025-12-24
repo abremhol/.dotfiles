@@ -1,16 +1,8 @@
 return {
-  {
-    'gthelding/monokai-pro.nvim',
-    config = function()
-      require('monokai-pro').setup {
-        filter = 'ristretto',
-        override = function()
-          return {
-            NonText = { fg = '#948a8b' },
-          }
-        end,
-      }
-      vim.cmd [[colorscheme monokai-pro]]
-    end,
-  },
+	{
+		"rebelot/kanagawa.nvim",
+		config = function()
+			vim.cmd("colorscheme kanagawa")
+		end,
+	},
 }

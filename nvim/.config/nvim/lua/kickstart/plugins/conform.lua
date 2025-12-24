@@ -39,8 +39,8 @@ return {
         cs = { 'csharpier' },
         xml = { 'xmlformat' },
         json = { 'yq' },
-        yaml = { 'yq' },
-        yml = { 'yq' },
+        yaml = { 'yamlfmt' },
+        yml = { 'yamlfmt' },
       },
       formatters = {
         csharpier = {
