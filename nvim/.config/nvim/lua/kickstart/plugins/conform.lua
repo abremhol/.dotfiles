@@ -3,16 +3,17 @@ return {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
-    -- keys = {
-    -- {
-    --   '<leader>gf',
-    --   function()
-    --     vim.cmd 'Format'
-    --   end,
-    --   mode = '',
-    --   desc = '[G]o[F]ormat buffer',
-    -- },
-    -- },
+    keys = {
+      {
+        -- Customize or remove this keymap to your liking
+        '<leader>gf',
+        function()
+          require('conform').format { async = true }
+        end,
+        mode = '',
+        desc = 'Format buffer',
+      },
+    },
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
@@ -36,7 +37,7 @@ return {
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
-        cs = { 'csharpier' },
+        cs = { lsp_format = 'fallback' },
         xml = { 'xmlformat' },
         json = { 'yq' },
         yaml = { 'yamlfmt' },

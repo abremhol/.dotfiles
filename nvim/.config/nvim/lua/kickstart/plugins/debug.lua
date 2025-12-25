@@ -5,7 +5,6 @@ return {
   enabled = true,
   config = function()
     local dap = require 'dap'
-    local dotnet = require 'easy-dotnet'
     local dapui = require 'dapui'
     dap.set_log_level 'TRACE'
 

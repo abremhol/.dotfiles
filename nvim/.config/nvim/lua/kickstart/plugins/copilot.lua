@@ -69,6 +69,7 @@ return {
         },
       },
       show_defaults = false,
+      ignore_warnings = true,
       adapters = {
         http = {
           copilot = function()
