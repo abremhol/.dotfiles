@@ -80,12 +80,20 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
+          --default lsp shortcuts
+          -- "gra" (Normal and Visual mode) is mapped to vim.lsp.buf.code_action()
+          -- "gri" is mapped to vim.lsp.buf.implementation()
+          -- "grn" is mapped to vim.lsp.buf.rename()
+          -- "grr" is mapped to vim.lsp.buf.references()
+          -- "grt" is mapped to vim.lsp.buf.type_definition()
+          -- "gO" is mapped to vim.lsp.buf.document_symbol()
+          -- CTRL-S (Insert mode) is mapped to vim.lsp.buf.signature_help()
+          -- "an" and "in" (Visual and Operator-pending mode) are mapped to outer and inner incremental selections, respectively, using vim.lsp.buf.selection_range()
+
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map('<leader>ln', vim.lsp.buf.rename, '[L]sp Re[N]ame')
           map('<F2>', vim.lsp.buf.rename, '[R]e[n]ame')
 
-          map('<C-i>', vim.lsp.buf.signature_help, 'Signature Help', 'i')
           map('<leader>lsh', vim.lsp.buf.signature_help, 'Signature Help', 'n')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
@@ -105,6 +113,8 @@ return {
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('<leader>ld', require('telescope.builtin').lsp_definitions, '[L]sp [D]efinition')
+
           map('gn', function()
             vim.diagnostic.jump { count = 1, float = true }
           end, '[G]oto [N]ext error')
@@ -112,12 +122,6 @@ return {
           map('gp', function()
             vim.diagnostic.jump { count = -1, float = true }
           end, '[G]oto [P]revious error')
-          map('<leader>ld', require('telescope.builtin').lsp_definitions, '[L]sp [D]efinition')
-
-          -- WARN: This is not Goto Definition, this is Goto Declaration.
-          --  For example, in C this would take you to the header.
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-          map('<leader>lD', vim.lsp.buf.declaration, '[L]sp [D]eclaration')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.

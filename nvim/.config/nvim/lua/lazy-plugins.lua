@@ -56,7 +56,6 @@ require('lazy').setup({
   require 'kickstart/plugins/easy-dotnet',
   require 'kickstart/plugins/copilot',
   require 'kickstart/plugins/lazygit',
-  require 'kickstart/plugins/trouble',
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
