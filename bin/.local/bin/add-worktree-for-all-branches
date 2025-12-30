@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Exit on errors
+set -e
+
+# Get base repo directory name
+REPO_NAME=$(basename "$PWD")
+CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
+
+echo "📥 Fetching all remote branches..."
+git fetch --all --prune
+
+echo "🔧 Creating local tracking branches for remote branches..."
+for remote_branch in $(git branch -r | grep -vE 'HEAD|origin/HEAD'); do
+  local_branch=${remote_branch#origin/}
+
+  # Skip if local branch already exists
+  if git show-ref --verify --quiet "refs/heads/$local_branch"; then
+    continue
+  fi
+
+  echo "→ Creating local branch $local_branch tracking $remote_branch"
+  git branch --track "$local_branch" "$remote_branch" 2>/dev/null || true
+done
+
+echo "🌿 Creating worktrees for local branches..."
+for branch in $(git branch --format="%(refname:short)"); do
+  if [ "$branch" = "$CURRENT_BRANCH" ]; then
+    echo "⏭️ Skipping currently checked out branch: $branch"
+    continue
+  fi
+
+  TARGET_DIR="../${REPO_NAME}-${branch}"
+
+  if [ -d "$TARGET_DIR" ]; then
+    echo "⚠️ Worktree for $branch already exists at $TARGET_DIR"
+    continue
+  fi
+
+  echo "✅ Adding worktree for $branch at $TARGET_DIR"
+  git worktree add "$TARGET_DIR" "$branch"
+done
+
+echo "🎉 Done!"
+

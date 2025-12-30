@@ -13,6 +13,7 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
 bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s '^[[15~' 'tmux-cht.sh\n'
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin

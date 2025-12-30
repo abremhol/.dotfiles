@@ -102,4 +102,8 @@ vim.api.nvim_create_user_command('Q', 'q', {})
 if vim.fn.has 'nvim' == 1 and vim.fn.executable 'nvr' == 1 then
   vim.env.GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
 end
+
+-- dotnet compiler errors
+vim.g.dotnet_errors_only = true
+vim.g.dotnet_show_project_file = false
 -- endm: ts=2 sts=2 sw=2 et

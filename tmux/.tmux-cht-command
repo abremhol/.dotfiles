@@ -23,7 +23,6 @@ rename
 jq
 cat
 ssh
-cargo
 git
 git-worktree
 git-status
@@ -35,3 +34,12 @@ stow
 chmod
 chown
 make
+dotnet
+find 
+apt
+sed
+awk
+az
+fzf
+grep
+tmux
