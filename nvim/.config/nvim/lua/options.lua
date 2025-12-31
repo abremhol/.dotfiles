@@ -107,3 +107,24 @@ end
 vim.g.dotnet_errors_only = true
 vim.g.dotnet_show_project_file = false
 -- endm: ts=2 sts=2 sw=2 et
+--
+-- https://emojipedia.org/en/stickers/search?q=circle
+vim.fn.sign_define('DapBreakpoint', {
+  text = '⚪',
+  texthl = 'DapBreakpointSymbol',
+  linehl = 'DapBreakpoint',
+  numhl = 'DapBreakpoint',
+})
+
+vim.fn.sign_define('DapStopped', {
+  text = '🔴',
+  texthl = 'yellow',
+  linehl = 'DapBreakpoint',
+  numhl = 'DapBreakpoint',
+})
+vim.fn.sign_define('DapBreakpointRejected', {
+  text = '⭕',
+  texthl = 'DapStoppedSymbol',
+  linehl = 'DapBreakpoint',
+  numhl = 'DapBreakpoint',
+})

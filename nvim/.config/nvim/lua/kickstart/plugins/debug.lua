@@ -9,16 +9,20 @@ return {
     dap.set_log_level 'TRACE'
 
     dap.listeners.before.attach.dapui_config = function()
+      require('nvim-tree.api').tree.close()
       dapui.open()
     end
     dap.listeners.before.launch.dapui_config = function()
+      require('nvim-tree.api').tree.close()
       dapui.open()
     end
     dap.listeners.before.event_terminated.dapui_config = function()
       dapui.close()
+      require('nvim-tree.api').tree.open()
     end
     dap.listeners.before.event_exited.dapui_config = function()
       dapui.close()
+      require('nvim-tree.api').tree.open()
     end
 
     vim.api.nvim_create_autocmd('FileType', {
@@ -64,7 +68,54 @@ return {
     {
       'rcarriga/nvim-dap-ui',
       config = function()
-        require('dapui').setup()
+        require('dapui').setup {
+          expand_lines = true,
+          controls = { enabled = false }, -- no extra play/step buttons
+          floating = { border = 'rounded' },
+          -- Set dapui window
+          render = {
+            max_type_length = 60,
+            max_value_lines = 200,
+          },
+          layouts = {
+            {
+              elements = {
+                {
+                  id = 'scopes',
+                  size = 0.75,
+                },
+                {
+                  id = 'breakpoints',
+                  size = 0.25,
+                },
+                -- {
+                --   id = 'stacks',
+                --   size = 0.25,
+                -- },
+                -- {
+                --   id = 'watches',
+                --   size = 0.25,
+                -- },
+              },
+              position = 'left',
+              size = 40,
+            },
+            {
+              elements = {
+                {
+                  id = 'repl',
+                  size = 1,
+                },
+                -- {
+                --   id = 'console',
+                --   size = 0.75,
+                -- },
+              },
+              position = 'bottom',
+              size = 10,
+            },
+          },
+        }
       end,
     },
   },
