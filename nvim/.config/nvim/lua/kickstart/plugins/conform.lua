@@ -38,13 +38,13 @@ return {
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         cs = { lsp_format = 'fallback' },
-        xml = { 'xmlformatter' },
+        xml = { 'xmlformat' },
         json = { 'jq' },
         yaml = { 'yamlfmt' },
         yml = { 'yamlfmt' },
         css = { 'prettier' },
         html = { 'prettier' },
-        csproj = { 'xmlformatter' },
+        csproj = { 'xmlformat' },
       },
       formatters = {
         csharpier = {
@@ -52,9 +52,14 @@ return {
           args = { 'format' },
           stdin = true,
         },
-        xmlformatter = {
-          command = 'xmlformatter',
+        xmlformat = {
+          command = 'xmlformat',
           args = { '--selfclose', '-' },
+          stdin = true,
+        },
+        jq = {
+          command = 'jq',
+          args = { '--indent', '2', '.' },
           stdin = true,
         },
       },
