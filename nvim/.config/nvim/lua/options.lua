@@ -89,6 +89,7 @@ vim.o.signcolumn = 'yes' -- always show the sign column, otherwise it would shif
 vim.o.updatetime = 50 -- faster completion (4000ms default)
 vim.o.cmdheight = 1 -- more space in the neovim command line for displaying messages
 vim.o.colorcolumn = '131' -- vertical line to show recommended line length
+vim.opt.inccommand = 'split' -- preview incremental substitut
 
 -- custom
 mouse = 'a' -- allow the mouse to be used in neovim
