@@ -41,6 +41,7 @@ return {
     vim.keymap.set('n', '<leader>dr', dap.repl.toggle, {})
     vim.keymap.set('n', '<leader>dj', dap.down, {})
     vim.keymap.set('n', '<leader>dk', dap.up, {})
+    vim.keymap.set('n', '<leader>dt', dap.terminate, {})
     vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, {})
 
     local function smart_hover()
