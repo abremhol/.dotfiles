@@ -156,5 +156,14 @@ return {
     vim.keymap.set('n', '<C-p>', function()
       dotnet.run_project()
     end)
+
+    local diagnostics = require 'easy-dotnet.actions.diagnostics'
+    vim.keymap.set('n', '<leader>fD', function()
+      diagnostics.get_workspace_diagnostics()
+    end)
+
+    vim.keymap.set('n', '<leader>fDe', function()
+      diagnostics.get_workspace_diagnostics 'error'
+    end)
   end,
 }
