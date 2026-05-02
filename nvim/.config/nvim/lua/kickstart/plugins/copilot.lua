@@ -78,7 +78,7 @@ return {
               schema = {
                 model = {
                   -- "gpt-5.1-codex-max", "gpt-5.2", "gpt-4o", "gpt-4.1", "grok-code-fast-1", "claude-sonnet-4", "gpt-5.2-codex", "claude-sonnet-4.5", "gpt-5.1-codex", "gpt-5.3-codex", "claude-haiku-4.5", "gpt-5.4-mini", "gemini-2.5-pro", "gpt-5.4", "gpt-5-mini", "gpt-5.1", "claude-sonnet-4.6", "claude-opus-4.5",
-                  default = 'claude-opus-4.6',
+                  default = 'claude-sonnet-4.6',
                 },
               },
             })

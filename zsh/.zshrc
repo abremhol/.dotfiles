@@ -32,3 +32,4 @@ export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 export OMAKUB_PATH=$HOME/.local/share/omakub
 
+eval "$(~/.local/bin/mise activate zsh)"
