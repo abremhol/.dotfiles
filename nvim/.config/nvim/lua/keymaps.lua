@@ -29,10 +29,9 @@ vim.keymap.set('n', '<C-Down>', ':resize +2<CR>')
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
 
--- Comment
-vim.keymap.set('x', '<leader>c', "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>")
-vim.keymap.set('n', '<leader>c', "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>")
-vim.keymap.set('v', '<leader>c', "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>")
+-- Comment (native commenting built into nvim 0.12+, using gc/gcc operators)
+vim.keymap.set('n', '<leader>c', 'gcc', { remap = true, desc = 'Toggle comment line' })
+vim.keymap.set('v', '<leader>c', 'gc', { remap = true, desc = 'Toggle comment' })
 
 -- easy dotnet
 vim.keymap.set('n', '<leader>tr', '<cmd>Dotnet testrunner<CR>')
@@ -61,11 +60,11 @@ vim.keymap.set('v', 'p', '"_dP')
 vim.keymap.set('n', '<leader>zz', '<cmd>ZenMode<CR>')
 
 -- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
+-- See `:help vim.hl.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
   group = highlight_group,
   pattern = '*',

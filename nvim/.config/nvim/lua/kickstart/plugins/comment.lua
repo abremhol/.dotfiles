@@ -1,6 +1,1 @@
-return {
-  'numToStr/Comment.nvim',
-  opts = {
-    -- add any options here
-  },
-}
+-- Native commenting (gc/gcc) is built into Neovim 0.12+; Comment.nvim is no longer needed.
