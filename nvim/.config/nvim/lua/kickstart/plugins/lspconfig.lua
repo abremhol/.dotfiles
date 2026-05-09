@@ -291,6 +291,7 @@ return {
         'yaml-language-server',
         'markdown-oxide',
       })
+      ensure_installed = vim.fn.uniq(vim.fn.sort(ensure_installed))
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       -- Configure each server individually (mason-lspconfig v2 removed handlers)
