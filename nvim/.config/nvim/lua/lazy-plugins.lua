@@ -50,7 +50,6 @@ require('lazy').setup({
   --
   require 'kickstart/plugins/nvim-tree',
   require 'kickstart/plugins/zenmode',
-  -- require 'kickstart/plugins/comment', -- replaced by native gc/gcc in nvim 0.12+
   require 'kickstart/plugins/maximizer',
   require 'kickstart/plugins/undotree',
   require 'kickstart/plugins/easy-dotnet',
