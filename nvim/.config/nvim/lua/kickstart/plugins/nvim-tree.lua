@@ -17,7 +17,7 @@ local custom_on_attach = function(bufnr)
 end
 
 return {
-  'kyazdani42/nvim-tree.lua',
+  'nvim-tree/nvim-tree.lua',
   version = '*',
   lazy = false,
   dependencies = {

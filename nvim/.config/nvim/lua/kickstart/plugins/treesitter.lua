@@ -17,8 +17,6 @@ return {
         'query',
         'vim',
         'vimdoc',
-        'vimdoc',
-        'html',
         'css',
         'c_sharp',
         'bicep',
