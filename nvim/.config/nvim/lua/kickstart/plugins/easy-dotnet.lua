@@ -157,6 +157,10 @@ return {
       dotnet.run_project()
     end)
 
+    vim.keymap.set('n', '<leader>B', function()
+      dotnet.build_solution_quickfix()
+    end)
+
     local diagnostics = require 'easy-dotnet.actions.diagnostics'
     vim.keymap.set('n', '<leader>fD', function()
       diagnostics.get_workspace_diagnostics()
