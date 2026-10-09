@@ -1,16 +1,9 @@
 return {
 	{
-		"gthelding/monokai-pro.nvim",
+		"catppuccin/nvim",
+		name = "catppuccin",
 		config = function()
-			require("monokai-pro").setup({
-				filter = "ristretto",
-				override = function()
-					return {
-						NonText = { fg = "#948a8b" },
-					}
-				end,
-			})
-			vim.cmd([[colorscheme monokai-pro]])
+			vim.cmd("colorscheme catppuccin")
 		end,
 	},
 }
