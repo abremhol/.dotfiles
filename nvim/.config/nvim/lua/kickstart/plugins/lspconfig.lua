@@ -257,7 +257,7 @@ return {
         'csharpier',
         'prettier',
         'prettierd',
-        'xmlformatter',
+        -- 'xmlformatter',
         'yamlfmt',
         'lua-language-server',
         'bicep-lsp',
