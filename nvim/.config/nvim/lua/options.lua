@@ -15,13 +15,43 @@ vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
+-- Copy yanks to the system clipboard with OSC 52. This is needed on headless /
+-- remote machines (no X11/Wayland clipboard tool) and works through tmux when
+-- it has `set -g set-clipboard on`. When a local clipboard tool is available
+-- (typical desktop), Nvim's own provider is used instead: forcing OSC 52 there
+-- would break `"+p` on terminals that only support OSC 52 writes.
+--  See `:help clipboard-osc52`
+local function executable(name)
+  return vim.fn.executable(name) == 1
+end
+
+local has_native_clipboard = ((vim.env.WAYLAND_DISPLAY or '') ~= '' and executable 'wl-copy')
+  or ((vim.env.DISPLAY or '') ~= '' and (executable 'xclip' or executable 'xsel'))
+
+if not has_native_clipboard then
+  local osc52_copy = require('vim.ui.clipboard.osc52').copy '+'
+
+  vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+      local event = vim.v.event
+      if event.operator == 'y' and event.regname ~= '_' then
+        -- Take the text straight from the yank event. Reading the register with
+        -- getreg() would round-trip through the clipboard provider (an OSC 52
+        -- "read"), which blocks when the terminal doesn't answer, e.g. when
+        -- yanking with `"+y`.
+        osc52_copy(event.regcontents)
+      end
+    end,
+  })
+
+  -- Also enable `"+y`/`"+p`. Copying works with OSC 52, but reading the
+  -- clipboard (OSC 52 query) is unsupported by terminals such as Windows
+  -- Terminal, so `"+p` will time out -- use the terminal's paste shortcut
+  -- (Ctrl+Shift+V) instead.
+  vim.g.clipboard = 'osc52'
+end
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = true
 
 -- Enable break indent
 vim.o.breakindent = true

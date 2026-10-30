@@ -60,11 +60,11 @@ vim.keymap.set('v', 'p', '"_dP')
 vim.keymap.set('n', '<leader>zz', '<cmd>ZenMode<CR>')
 
 -- [[ Highlight on yank ]]
--- See `:help vim.hl.on_yank()`
+-- See `:help vim.hl.hl_op()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.hl.on_yank()
+    vim.hl.hl_op()
   end,
   group = highlight_group,
   pattern = '*',
